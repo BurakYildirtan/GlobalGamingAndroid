@@ -5,6 +5,9 @@ plugins {
 android {
     namespace = "com.example.globalgaming"
     compileSdk = 34
+    viewBinding {
+        enable = true
+    }
 
     defaultConfig {
         applicationId = "com.example.globalgaming"

@@ -3,4 +3,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="login">Login</string>
+    <string name="registration">Registrieren</string>
+    <string name="or_registration">oder Registrieren</string>
+    <string name="or_login">oder Login</string>
+    <string name="email">Email</string>
+    <string name="password">Passwort</string>
+    <string name="error_wrong_user_input">Email oder Passwort ist nicht korrekt.</string>
 </resources>
