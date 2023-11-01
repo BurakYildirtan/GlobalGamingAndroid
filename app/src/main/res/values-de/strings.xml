@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GlobalGaming</string>
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_shopping_cart">Warenkorb</string>
+    <string name="title_settings">Einstellungen</string>
+
+    <string name="login">Anmelden</string>
+    <string name="registration">Registrieren</string>
+    <string name="or_registration">oder Registrieren</string>
+    <string name="or_login">oder Anmelden</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Passwort</string>
+    <string name="error_wrong_user_input">E-Mail oder Passwort ist nicht korrekt.</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Nachrichten</string>
+    <string name="sync_header">Synchronisierung</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Deine Signatur</string>
+    <string name="reply_title">Standardantwortaktion</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">E-Mail periodisch synchronisieren</string>
+    <string name="attachment_title">Eingehende Anhänge herunterladen</string>
+    <string name="attachment_summary_on">Anhänge für eingehende E-Mails automatisch herunterladen
+    </string>
+    <string name="attachment_summary_off">Anhänge nur bei manueller Anforderung herunterladen</string>
+</resources>

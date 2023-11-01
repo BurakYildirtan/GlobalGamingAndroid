@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.globalgaming.R;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.databinding.FragmentLoginBinding;
+import com.example.globalgaming.ui.main.MainFragment;
 import com.example.globalgaming.ui.registration.RegistrationFragment;
 import com.google.android.material.button.MaterialButton;
 
@@ -54,8 +55,18 @@ public class LoginFragment extends Fragment {
     private void initBtnLogin() {
         MaterialButton btnLogin = binding.btnLogin;
         btnLogin.setOnClickListener( view -> {
-
+            goToMainFragment();
         });
+    }
+
+    private void goToMainFragment() {
+        MainFragment mainFragment = new MainFragment();
+        fragmentTransaction = getParentFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, mainFragment, Constants.TAG_MAIN)
+                .setReorderingAllowed(true)
+                .addToBackStack(null);
+
+        fragmentTransaction.commit();
     }
 
     private void initBtnGoToRegistration() {

@@ -15,6 +15,7 @@ import com.example.globalgaming.R;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.databinding.FragmentRegistrationBinding;
 import com.example.globalgaming.ui.login.LoginFragment;
+import com.example.globalgaming.ui.main.MainFragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.transition.platform.MaterialSharedAxis;
 
@@ -60,8 +61,18 @@ public class RegistrationFragment extends Fragment {
     private void initBtnRegistration() {
         MaterialButton btnRegistration = binding.btnRegistration;
         btnRegistration.setOnClickListener( view1 -> {
-
+            goToMainFragment();
         });
+    }
+
+    private void goToMainFragment() {
+        MainFragment mainFragment = new MainFragment();
+        fragmentTransaction = getParentFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, mainFragment, Constants.TAG_MAIN)
+                .setReorderingAllowed(true)
+                .addToBackStack(null);
+
+        fragmentTransaction.commit();
     }
 
     private void initBtnGoToLogin() {

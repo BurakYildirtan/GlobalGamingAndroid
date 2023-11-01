@@ -1,13 +1,29 @@
 <resources>
     <string name="app_name">GlobalGaming</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_shopping_cart">Shopping Cart</string>
+    <string name="title_settings">Settings</string>
+
     <string name="login">Login</string>
-    <string name="registration">Registrieren</string>
-    <string name="or_registration">oder Registrieren</string>
-    <string name="or_login">oder Login</string>
+    <string name="registration">Register</string>
+    <string name="or_registration">or Register</string>
+    <string name="or_login">or Login</string>
     <string name="email">Email</string>
-    <string name="password">Passwort</string>
-    <string name="error_wrong_user_input">Email oder Passwort ist nicht korrekt.</string>
+    <string name="password">Password</string>
+    <string name="error_wrong_user_input">Email or password is incorrect.</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>
