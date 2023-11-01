@@ -5,6 +5,7 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/homeFragment">
 
+    <include app:graph="@navigation/login_navigation" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.globalgaming.ui.profile.ProfileFragment"

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="0dp"
@@ -13,7 +13,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:title="@string/title_home"
-
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

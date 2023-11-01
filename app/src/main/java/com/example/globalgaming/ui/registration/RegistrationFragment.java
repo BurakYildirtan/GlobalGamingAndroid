@@ -83,23 +83,28 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void goToLogin() {
-        @Nullable Fragment loginFragment = getParentFragmentManager().findFragmentByTag(Constants.TAG_LOGIN);
+//        @Nullable Fragment loginFragment = getParentFragmentManager().findFragmentByTag(Constants.TAG_LOGIN);
+//
+//        if (loginFragment != null) {
+//            fragmentTransaction = getParentFragmentManager().beginTransaction()
+//                    .replace(R.id.fragment_container, loginFragment, Constants.TAG_LOGIN)
+//                    .setReorderingAllowed(true)
+//                    .addToBackStack(null);
+//        }
+//        else {
+//            LoginFragment newLoginFragment = new LoginFragment();
+//
+//            fragmentTransaction = getParentFragmentManager().beginTransaction()
+//                    .replace(R.id.fragment_container, newLoginFragment, Constants.TAG_LOGIN)
+//                    .setReorderingAllowed(true)
+//                    .addToBackStack(null);
+//        }
 
-        if (loginFragment != null) {
-            fragmentTransaction = getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, loginFragment, Constants.TAG_LOGIN)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null);
-        }
-        else {
-            LoginFragment newLoginFragment = new LoginFragment();
+        LoginFragment newLoginFragment = new LoginFragment();
 
-            fragmentTransaction = getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, newLoginFragment, Constants.TAG_LOGIN)
-                    .setReorderingAllowed(true)
-                    .addToBackStack(null);
-        }
-
+        fragmentTransaction = getParentFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, newLoginFragment, Constants.TAG_LOGIN)
+                .setReorderingAllowed(true);
         fragmentTransaction.commit();
     }
 }
