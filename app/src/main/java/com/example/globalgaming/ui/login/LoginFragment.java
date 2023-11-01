@@ -8,15 +8,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-
+import com.example.globalgaming.R;
+import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.databinding.FragmentLoginBinding;
-import com.example.globalgaming.ui.home.HomeViewModel;
+import com.example.globalgaming.ui.registration.RegistrationFragment;
+import com.google.android.material.button.MaterialButton;
 
 public class LoginFragment extends Fragment {
 
 
    @Nullable private FragmentLoginBinding binding;
+   private FragmentTransaction fragmentTransaction;
    private LoginViewModel loginViewModel;
 
     @Override
@@ -42,5 +46,43 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        initBtnLogin();
+        initBtnGoToRegistration();
+    }
+
+    private void initBtnLogin() {
+        MaterialButton btnLogin = binding.btnLogin;
+        btnLogin.setOnClickListener( view -> {
+
+        });
+    }
+
+    private void initBtnGoToRegistration() {
+        MaterialButton btnGoToRegistration = binding.btnGoToRegistration;
+        btnGoToRegistration.setOnClickListener( view -> {
+            goToRegistration();
+        });
+    }
+
+    private void goToRegistration() {
+        @Nullable Fragment registrationFragment = getParentFragmentManager().findFragmentByTag(Constants.TAG_REGISTRATION);
+
+        if (registrationFragment != null) {
+            fragmentTransaction = getParentFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, registrationFragment, Constants.TAG_REGISTRATION)
+                    .setReorderingAllowed(true)
+                    .addToBackStack(null);
+        }
+        else {
+            RegistrationFragment newRegistrationFragment = new RegistrationFragment();
+
+            fragmentTransaction = getParentFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, newRegistrationFragment, Constants.TAG_REGISTRATION)
+                    .setReorderingAllowed(true)
+                    .addToBackStack(null);
+        }
+
+        fragmentTransaction.commit();
     }
 }

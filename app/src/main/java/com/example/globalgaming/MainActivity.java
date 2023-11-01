@@ -2,29 +2,23 @@ package com.example.globalgaming;
 
 import android.os.Bundle;
 
+import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.ui.login.LoginFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.example.globalgaming.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initLogin();
-        initRegistration();
-
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -40,15 +34,12 @@ public class MainActivity extends AppCompatActivity {
 //        NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
-    private void initRegistration() {
-    }
-
     private void initLogin() {
-        LoginFragment loginFragment = new LoginFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, loginFragment); // "fragment_container" ist der Container in Ihrer Activity, der das Fragment aufnimmt
-        transaction.addToBackStack(null);
-        transaction.commit();
+        fragmentTransaction = getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, LoginFragment.class, null, Constants.TAG_LOGIN)
+                .addToBackStack(null)
+                .setReorderingAllowed(true);
+        fragmentTransaction.commit();
     }
 
 }
