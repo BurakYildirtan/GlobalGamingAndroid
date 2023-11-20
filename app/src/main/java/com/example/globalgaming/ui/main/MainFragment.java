@@ -57,7 +57,6 @@ public class MainFragment extends Fragment {
         BottomNavigationView navView = binding.navView;
         NavController navController = Navigation.findNavController(requireView().findViewById(R.id.nav_host_fragment_main));
 
-
         navView.setOnItemSelectedListener( item -> {
             int itemId = item.getItemId();
 

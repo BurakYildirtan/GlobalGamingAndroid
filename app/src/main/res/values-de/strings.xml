@@ -27,4 +27,15 @@
     <string name="attachment_summary_on">Anhänge für eingehende E-Mails automatisch herunterladen
     </string>
     <string name="attachment_summary_off">Anhänge nur bei manueller Anforderung herunterladen</string>
+
+    <string name="sales">Angebote</string>
+    <string name="hardware">Hardware</string>
+    <string name="games">Spiele</string>
+    <string name="birthday">Geburtstag</string>
+    <string name="street">Straße</string>
+    <string name="postal_code">PLZ</string>
+    <string name="city">Stadt</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="confirm">Bestätigen</string>
 </resources>

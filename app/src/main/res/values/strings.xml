@@ -26,4 +26,15 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="sales">Sales</string>
+    <string name="hardware">Hardware</string>
+    <string name="games">Games</string>
+    <string name="birthday">Birthday</string>
+    <string name="street">Street</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="city">City</string>
+    <string name="edit">Edit</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
 </resources>
