@@ -1,6 +1,7 @@
 package com.example.globalgaming.ui.login;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,13 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.globalgaming.R;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.databinding.FragmentLoginBinding;
+import com.example.globalgaming.domain.Connection;
 import com.example.globalgaming.ui.main.MainFragment;
 import com.example.globalgaming.ui.registration.RegistrationFragment;
 import com.google.android.material.button.MaterialButton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class LoginFragment extends Fragment {
 
@@ -47,9 +52,30 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Connection.getResponse("usersAll", new Connection.ResponseCallback() {
+            //gets the current extractions as a json array
+            @Override
+            public void onSuccess(JSONArray response) {
+                JSONArray users = response;
+                System.out.println("Hierrrr" + users);
+
+                try {
+                    Log.d("Connection.onSuccess()", ""+response);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+                // Behandle den Fehler
+                e.printStackTrace();
+            }
+        });;
 
         initBtnLogin();
         initBtnGoToRegistration();
+
     }
 
     private void initBtnLogin() {
