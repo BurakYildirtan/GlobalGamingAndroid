@@ -5,17 +5,16 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/homeFragment">
 
-    <include app:graph="@navigation/login_navigation" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.globalgaming.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.globalgaming.ui.home.HomeFragment"
         android:label="ProductsFragment"
         tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.globalgaming.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/shoppingCartFragment"
         android:name="com.example.globalgaming.ui.shoppingCart.ShoppingCartFragment"
