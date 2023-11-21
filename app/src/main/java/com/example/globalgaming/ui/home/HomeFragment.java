@@ -7,17 +7,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.globalgaming.R;
 import com.example.globalgaming.databinding.FragmentHomeBinding;
+import com.example.globalgaming.domain.model.Product;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.carousel.CarouselLayoutManager;
 import com.google.android.material.carousel.CarouselStrategy;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class HomeFragment extends Fragment {
 
@@ -32,6 +38,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         initCategoryAdapter();
+        initProductAdapter();
 
         return root;
     }
@@ -59,14 +66,27 @@ public class HomeFragment extends Fragment {
         titleList.add(titleGames);
 
 
-        CatergoryAdapter adapter = new CatergoryAdapter(this.getContext(), imgList, titleList);
-        rvCategory.setAdapter(adapter);
+        CatergoryAdapter categoryAdapter = new CatergoryAdapter(this.getContext(), imgList, titleList);
+        rvCategory.setAdapter(categoryAdapter);
 
-        adapter.setOnItemClickListener((imageView, path) -> {
+        categoryAdapter.setOnItemClickListener((imageView, path) -> {
 
         });
 
 
+    }
+
+    private void initProductAdapter() {
+        RecyclerView rvProduct = binding.rvProduct;
+        ArrayList<Product> productList = new ArrayList<>();
+
+        for (int i = 0; i < 20 ; i++) {
+            Product p = new Product(i, "Global Gaming Test", 79.99, 19.00);
+            productList.add(p);
+        }
+
+        ProductAdapter productAdapter = new ProductAdapter(this.getContext(), productList);
+        rvProduct.setAdapter(productAdapter);
     }
 
     @Override

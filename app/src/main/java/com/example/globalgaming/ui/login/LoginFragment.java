@@ -52,27 +52,26 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Connection.getResponse("usersAll", new Connection.ResponseCallback() {
-            //gets the current extractions as a json array
-            @Override
-            public void onSuccess(JSONArray response) {
-                JSONArray users = response;
-                System.out.println("Hierrrr" + users);
-
-                try {
-                    Log.d("Connection.onSuccess()", ""+response);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            @Override
-            public void onError(Exception e) {
-                // Behandle den Fehler
-                e.printStackTrace();
-            }
-        });;
-
+//        Connection.getResponse("usersAll", new Connection.ResponseCallback() {
+//            //gets the current extractions as a json array
+//            @Override
+//            public void onSuccess(JSONArray response) {
+//                JSONArray users = response;
+//                System.out.println("Hierrrr" + users);
+//
+//                try {
+//                    Log.d("Connection.onSuccess()", ""+response);
+//                } catch (Exception e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//
+//            @Override
+//            public void onError(Exception e) {
+//                // Behandle den Fehler
+//                e.printStackTrace();
+//            }
+//        });;
         initBtnLogin();
         initBtnGoToRegistration();
 
