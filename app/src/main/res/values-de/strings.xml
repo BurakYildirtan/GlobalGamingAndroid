@@ -7,6 +7,7 @@
     <string name="title_settings">Einstellungen</string>
 
     <string name="login">Anmelden</string>
+    <string name="logout">Abmelden</string>
     <string name="registration">Registrieren</string>
     <string name="or_registration">oder Registrieren</string>
     <string name="or_login">oder Anmelden</string>
@@ -39,4 +40,15 @@
     <string name="cancel">Abbrechen</string>
     <string name="confirm">Bestätigen</string>
     <string name="loading_dots">...</string>
+    <string name="contact">Contact</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="imprint">Imprint</string>
+    <string name="admin_panel">Admin Panel</string>
+    <string name="add_product">Produkt hinzufügen</string>
+    <string name="edit_product">Produkt bearbeiten</string>
+    <string name="remove_product">Produkt entfernen</string>
+    <string name="sum">Summe</string>
+    <string name="buy_now">Jetzt Kaufen</string>
+
 </resources>

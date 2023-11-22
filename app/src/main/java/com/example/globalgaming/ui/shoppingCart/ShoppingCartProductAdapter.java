@@ -1,4 +1,4 @@
-package com.example.globalgaming.ui.home;
+package com.example.globalgaming.ui.shoppingCart;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -9,23 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.globalgaming.R;
 import com.example.globalgaming.common.FormatHelpers;
 import com.example.globalgaming.domain.model.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
+public class ShoppingCartProductAdapter extends RecyclerView.Adapter<ShoppingCartProductAdapter.ViewHolder> {
     Context context;
 
     List<Product> productList;
 
 
-    public ProductAdapter(Context context, List<Product> productList) {
+    public ShoppingCartProductAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
     }
@@ -33,7 +32,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_product_in_shopping_cart, parent, false);
         return new ViewHolder(view);
     }
 
@@ -77,6 +76,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     @Override
     public int getItemCount() {return productList.size();}
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView productImage;

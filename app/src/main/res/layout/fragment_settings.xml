@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp"
+        >
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:title="@string/title_settings"
+            app:menu="@menu/icon_menu"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.TextButton"
+            android:id="@+id/btn_contact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp"
+            android:text="@string/contact"
+            android:textAlignment="textStart"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="24dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.TextButton"
+            android:id="@+id/btn_privacy_policy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_contact"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp"
+            android:text="@string/privacy_policy"
+            android:textAlignment="textStart"
+            android:textColor="?attr/colorOnSurface"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.TextButton"
+            android:id="@+id/btn_terms_and_conditions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_privacy_policy"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp"
+            android:text="@string/terms_and_conditions"
+            android:textAlignment="textStart"
+            android:textColor="?attr/colorOnSurface"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.TextButton"
+            android:id="@+id/btn_imprint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_terms_and_conditions"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp"
+            android:text="@string/imprint"
+            android:textAlignment="textStart"
+            android:textColor="?attr/colorOnSurface"
+            />
+
+        <com.google.android.material.divider.MaterialDivider
+            style="@style/Widget.Material3.MaterialDivider"
+            android:id="@+id/divider_settings_admin_panel"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_imprint"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="16dp"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/MaterialAlertDialog.Material3.Title.Text"
+            android:id="@+id/tv_title_admin_panel"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_settings_admin_panel"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp"
+            android:text="@string/admin_panel"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.TextButton"
+            android:id="@+id/btn_add_product"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_admin_panel"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp"
+            android:text="@string/add_product"
+            android:textAlignment="textStart"
+            android:textColor="?attr/colorOnSurface"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.TextButton"
+            android:id="@+id/btn_edit_product"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_add_product"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp"
+            android:text="@string/edit_product"
+            android:textAlignment="textStart"
+            android:textColor="?attr/colorOnSurface"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.TextButton"
+            android:id="@+id/btn_remove_product"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_edit_product"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="16dp"
+            android:text="@string/remove_product"
+            android:textAlignment="textStart"
+            android:textColor="?attr/colorOnSurface"
+            />
+
+        <com.google.android.material.divider.MaterialDivider
+            style="@style/Widget.Material3.MaterialDivider"
+            android:id="@+id/divider_settings_end"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_remove_product"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="16dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_settings_end"
+            android:layout_marginTop="32dp"
+            android:text="@string/logout"
+            android:layout_marginHorizontal="16dp"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
