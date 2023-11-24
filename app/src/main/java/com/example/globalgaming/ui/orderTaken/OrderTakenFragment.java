@@ -9,16 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import com.example.globalgaming.R;
 import com.example.globalgaming.databinding.FragmentOrderTakenBinding;
-import com.example.globalgaming.databinding.FragmentShoppingCartBinding;
-import com.example.globalgaming.domain.model.Product;
-import com.example.globalgaming.ui.shoppingCart.ShoppingCartProductAdapter;
 import com.example.globalgaming.ui.shoppingCart.ShoppingCartViewModel;
 import com.google.android.material.button.MaterialButton;
-
-import java.util.ArrayList;
 
 public class OrderTakenFragment extends Fragment {
 
@@ -46,20 +43,23 @@ public class OrderTakenFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initContinueShoppingBtn();
-        initCancelBtn();
+        final NavController navController = Navigation.findNavController(view);
+        initContinueShoppingBtn(navController);
+        initCancelBtn(navController);
     }
 
-    private void initContinueShoppingBtn() {
+    private void initContinueShoppingBtn(NavController navController) {
         MaterialButton btnContinueShopping = binding.btnContinueShopping;
         btnContinueShopping.setOnClickListener(view1 -> {
+            //TODO das funktioniert noch nicht richtig
+            //navController.navigate(R.id.action_orderTakenFragment_to_homeFragment);
         });
     }
 
-    private void initCancelBtn() {
+    private void initCancelBtn(NavController navController) {
         MaterialButton btnCancel = binding.btnCancel;
         btnCancel.setOnClickListener(view1 ->{
-
+            navController.navigate(R.id.action_orderTakenFragment_to_shoppingCartFragment);
         });
     }
 }

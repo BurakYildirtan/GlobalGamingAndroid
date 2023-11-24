@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import com.example.globalgaming.R;
 import com.example.globalgaming.databinding.FragmentShoppingCartBinding;
 import com.example.globalgaming.domain.model.Product;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 
@@ -43,6 +46,15 @@ public class ShoppingCartFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        final NavController navController = Navigation.findNavController(view);
+
+        initBtnBuyNowListener(navController);
+    }
+
     private void initShoppingCartProductAdapter() {
         RecyclerView rvShoppingCartProduct = binding.rvShoppingCartProduct;
         ArrayList<Product> productList = new ArrayList<>();
@@ -56,6 +68,13 @@ public class ShoppingCartFragment extends Fragment {
 
         ShoppingCartProductAdapter shoppingCartProductAdapter = new ShoppingCartProductAdapter(getContext(), productList);
         rvShoppingCartProduct.setAdapter(shoppingCartProductAdapter);
+    }
+
+    private void initBtnBuyNowListener(NavController navController) {
+        MaterialButton buyNow = binding.btnBuyNow;
+        buyNow.setOnClickListener( view -> {
+            navController.navigate(R.id.action_shoppingCartFragment_to_orderTakenFragment);
+        });
     }
 
 }

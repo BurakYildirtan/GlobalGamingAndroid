@@ -62,4 +62,5 @@
     <string name="cpu">Cpu</string>
     <string name="graphic_card">Graphic card</string>
     <string name="ram">Ram</string>
+    <string name="product">Product</string>
 </resources>

@@ -38,7 +38,7 @@ public class CatergoryAdapter extends RecyclerView.Adapter<CatergoryAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageView.setImageResource(imgList.get(position));
         holder.tvTitle.setText(titleList.get(position));
-//        holder.itemView.setOnClickListener(view -> onItemClickListener.onClick(holder.imageView, arrayList.get(position)));
+        holder.itemView.setOnClickListener(view -> onItemClickListener.onClick(holder.imageView, titleList.get(position)));
     }
 
     @Override
