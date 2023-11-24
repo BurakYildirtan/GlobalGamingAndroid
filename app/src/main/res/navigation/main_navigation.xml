@@ -19,10 +19,30 @@
         android:id="@+id/shoppingCartFragment"
         android:name="com.example.globalgaming.ui.shoppingCart.ShoppingCartFragment"
         android:label="fragment_shopping_cart"
-        tools:layout="@layout/fragment_shopping_cart" />
+        tools:layout="@layout/fragment_shopping_cart" >
+        <action
+            android:id="@+id/action_shoppingCartFragment_to_orderTakenFragment"
+            app:destination="@id/orderTakenFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.globalgaming.ui.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"
+        />
+    <fragment
+        android:id="@+id/orderTakenFragment"
+        android:name="com.example.globalgaming.ui.orderTaken.OrderTakenFragment"
+        android:label="OrderTakenFragment"
+        tools:layout="@layout/fragment_order_taken"
+        >
+        <action
+            android:id="@+id/action_orderTakenFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_orderTakenFragment_to_shoppingCartFragment"
+            app:destination="@id/shoppingCartFragment" />
+    </fragment>
 
 </navigation>

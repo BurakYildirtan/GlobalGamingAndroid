@@ -50,5 +50,18 @@
     <string name="remove_product">Produkt entfernen</string>
     <string name="sum">Summe</string>
     <string name="buy_now">Jetzt Kaufen</string>
+    <string name="thank_you_message_title">Vielen Dank ! 👑</string>
+    <string name="thank_you_message_body">Wir haben deine Bestellung aufgenommen und melden uns in Kürze. 🏎️</string>
+    <string name="continue_shopping">Weiter Shoppen</string>
+    <string name="add">Hinzufügen</string>
+    <string name="specifications">Spezifikationen</string>
+    <string name="player">Spieler</string>
+    <string name="genre">Genre</string>
+    <string name="publication">Veröffentlichung</string>
+    <string name="minimum_requirements">Mindestanforderungen</string>
+    <string name="recommended_requirements">Empfholene Anforderungen</string>
+    <string name="cpu">Cpu</string>
+    <string name="graphic_card">Grafikkarte</string>
+    <string name="ram">Ram</string>
 
 </resources>

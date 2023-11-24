@@ -16,6 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:title="@string/title_shopping_cart"
         app:menu="@menu/icon_menu"
+        app:titleTextColor="?attr/colorOnSurface"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -58,7 +59,7 @@
             android:id="@+id/tv_sum_sale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1000,00 €"
+            android:text="@string/loading_dots"
             app:layout_constraintTop_toBottomOf="@id/tv_sum_title"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="?attr/colorError"
@@ -70,7 +71,7 @@
             android:id="@+id/tv_sum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="799,99 €"
+            android:text="@string/loading_dots"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_sum_sale"
             android:textColor="?attr/colorOnPrimaryContainer"
