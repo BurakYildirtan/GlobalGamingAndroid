@@ -63,4 +63,10 @@
     <string name="graphic_card">Graphic card</string>
     <string name="ram">Ram</string>
     <string name="product">Product</string>
+    <string name="name">Name</string>
+    <string name="select_category">Select category</string>
+    <string name="game">Game</string>
+    <string name="price">Price</string>
+    <string name="checkbox_sale_title">In Sale ?</string>
+    <string name="percent">Percent</string>
 </resources>

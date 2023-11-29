@@ -73,7 +73,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_password"
+                android:id="@+id/et_product_genre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -95,7 +95,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_birthday"
+                android:id="@+id/et_product_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
