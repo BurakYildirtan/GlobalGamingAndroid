@@ -23,7 +23,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class UserRepositoryImplementation implements UserRepository {
+public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void loginUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback) {

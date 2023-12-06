@@ -11,7 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class UserRepositoryImplementationTest implements UserRepository {
+public class UserRepositoryImplTest implements UserRepository {
 
     @Override
     public void loginUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback) {

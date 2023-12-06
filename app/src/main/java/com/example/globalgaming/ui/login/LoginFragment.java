@@ -14,10 +14,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.globalgaming.R;
+import com.example.globalgaming.TheApp;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.Result;
-import com.example.globalgaming.data.remote.UserRepositoryImplementation;
-import com.example.globalgaming.data.test.UserRepositoryImplementationTest;
 import com.example.globalgaming.databinding.FragmentLoginBinding;
 import com.example.globalgaming.domain.model.UserModel;
 import com.example.globalgaming.domain.repository.UserRepository;
@@ -49,9 +48,8 @@ public class LoginFragment extends Fragment {
     }
 
     private void initViewModel() {
-        UserRepository userRepository = new UserRepositoryImplementation();
-        UserRepository userRepositoryTest = new UserRepositoryImplementationTest();
-        LoginViewModelFactory loginViewModelFactory = new LoginViewModelFactory(userRepositoryTest);
+        UserRepository userRepository = TheApp.appModule.getUserRepository();
+        LoginViewModelFactory loginViewModelFactory = new LoginViewModelFactory(userRepository);
         loginViewModel = new ViewModelProvider(this, loginViewModelFactory).get(LoginViewModel.class);
     }
 
