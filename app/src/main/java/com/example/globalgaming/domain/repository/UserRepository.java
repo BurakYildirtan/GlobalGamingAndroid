@@ -9,8 +9,10 @@ import org.json.JSONObject;
 
 public interface UserRepository {
 
-    void loginUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback);
+    void loginUser(JSONObject typedUserData, ResultCallback<UserModel> resultCallback);
 
-    void registerUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback);
+    void registerUser(JSONObject typedUserData, ResultCallback<UserModel> resultCallback);
+
+    void getUser(int id, ResultCallback<UserModel> resultCallback);
 
 }

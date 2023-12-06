@@ -72,6 +72,11 @@ public class UserRepositoryImpl implements UserRepository {
     public void registerUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback) {
 
     }
+
+    @Override
+    public void getUser(int id, ResultCallback<UserModel> resultCallback) {
+
+    }
 }
 
 
