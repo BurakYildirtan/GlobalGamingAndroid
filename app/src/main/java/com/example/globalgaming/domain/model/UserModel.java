@@ -48,6 +48,7 @@ public class UserModel {
             this.password = userData.getString(Constants.USER_MODEL_PASSWORD);
             this.role = userData.getString(Constants.USER_MODEL_ROLE);
         } catch (JSONException e) {
+            throw new RuntimeException();
         }
     }
 

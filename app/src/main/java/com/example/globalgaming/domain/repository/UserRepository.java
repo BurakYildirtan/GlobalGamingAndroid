@@ -9,6 +9,6 @@ import org.json.JSONObject;
 
 public interface UserRepository {
 
-    public void loginUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback);
+    void loginUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback);
 
 }

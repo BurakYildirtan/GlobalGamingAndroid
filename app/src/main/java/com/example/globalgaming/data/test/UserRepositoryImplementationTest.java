@@ -1,10 +1,6 @@
 package com.example.globalgaming.data.test;
 
 import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.example.globalgaming.common.Connection;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.Result;
 import com.example.globalgaming.common.callbacks.ResultCallback;
@@ -14,14 +10,6 @@ import com.example.globalgaming.domain.repository.UserRepository;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class UserRepositoryImplementationTest implements UserRepository {
 

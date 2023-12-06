@@ -1,11 +1,11 @@
 package com.example.globalgaming.domain.model;
 
 public class ProductModel {
-    private int id;
-    private String title;
-    private Double price;
+    private final int id;
+    private final String title;
+    private final Double price;
 
-    private Double saleInPercent;
+    private final Double saleInPercent;
 
     public ProductModel(int id, String title, Double price, Double saleInPercent) {
         this.id = id;
