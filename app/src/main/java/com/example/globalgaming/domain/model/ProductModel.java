@@ -1,15 +1,13 @@
 package com.example.globalgaming.domain.model;
 
-import androidx.annotation.Nullable;
-
-public class Product {
+public class ProductModel {
     private int id;
     private String title;
     private Double price;
 
     private Double saleInPercent;
 
-    public Product(int id, String title, Double price, Double saleInPercent) {
+    public ProductModel(int id, String title, Double price, Double saleInPercent) {
         this.id = id;
         this.title = title;
         this.price = price;

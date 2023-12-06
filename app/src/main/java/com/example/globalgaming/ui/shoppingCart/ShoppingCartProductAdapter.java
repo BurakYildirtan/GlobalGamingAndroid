@@ -9,22 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.globalgaming.R;
 import com.example.globalgaming.common.FormatHelpers;
-import com.example.globalgaming.domain.model.Product;
+import com.example.globalgaming.domain.model.ProductModel;
 
 import java.util.List;
 
 public class ShoppingCartProductAdapter extends RecyclerView.Adapter<ShoppingCartProductAdapter.ViewHolder> {
     Context context;
 
-    List<Product> productList;
+    List<ProductModel> productList;
 
 
-    public ShoppingCartProductAdapter(Context context, List<Product> productList) {
+    public ShoppingCartProductAdapter(Context context, List<ProductModel> productList) {
         this.context = context;
         this.productList = productList;
     }
@@ -38,7 +37,7 @@ public class ShoppingCartProductAdapter extends RecyclerView.Adapter<ShoppingCar
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Product product = productList.get(position);
+        ProductModel product = productList.get(position);
 
         initTitle(holder, product);
 
@@ -50,18 +49,18 @@ public class ShoppingCartProductAdapter extends RecyclerView.Adapter<ShoppingCar
 //        holder.itemView.setOnClickListener(view -> onItemClickListener.onClick(holder.imageView, arrayList.get(position)));
     }
 
-    private void initTitle(ViewHolder holder, Product product) {
+    private void initTitle(ViewHolder holder, ProductModel product) {
         String title = product.getTitle();
         holder.productTitle.setText(title);
     }
 
-    private void initProductPrice(ViewHolder holder, Product product) {
+    private void initProductPrice(ViewHolder holder, ProductModel product) {
         String productPrice = FormatHelpers.formatPriceAndCurrency(product.getPrice(), "€");
         holder.productPrice.setText(productPrice);
         holder.productPriceSale.setVisibility(View.GONE);
     }
 
-    private void initProductPriceSale(ViewHolder holder, Product product) {
+    private void initProductPriceSale(ViewHolder holder, ProductModel product) {
         Double price = product.getPrice();
         Double saleInPercent = product.getSaleInPercent();
         Double priceSale = FormatHelpers.calculatePriceWithSale(price, saleInPercent);

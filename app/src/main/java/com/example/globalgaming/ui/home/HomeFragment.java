@@ -4,26 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.globalgaming.R;
 import com.example.globalgaming.databinding.FragmentHomeBinding;
-import com.example.globalgaming.domain.model.Product;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.carousel.CarouselLayoutManager;
-import com.google.android.material.carousel.CarouselStrategy;
+import com.example.globalgaming.domain.model.ProductModel;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class HomeFragment extends Fragment {
 
@@ -78,10 +69,10 @@ public class HomeFragment extends Fragment {
 
     private void initProductAdapter() {
         RecyclerView rvProduct = binding.rvProduct;
-        ArrayList<Product> productList = new ArrayList<>();
+        ArrayList<ProductModel> productList = new ArrayList<>();
 
         for (int i = 0; i < 20 ; i++) {
-            Product p = new Product(i, "Global Gaming Test", 79.99, 19.00);
+            ProductModel p = new ProductModel(i, "Global Gaming Test", 79.99, 19.00);
             productList.add(p);
         }
 

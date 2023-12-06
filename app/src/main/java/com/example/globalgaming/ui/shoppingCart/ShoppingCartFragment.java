@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.globalgaming.R;
 import com.example.globalgaming.databinding.FragmentShoppingCartBinding;
-import com.example.globalgaming.domain.model.Product;
+import com.example.globalgaming.domain.model.ProductModel;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -57,12 +57,12 @@ public class ShoppingCartFragment extends Fragment {
 
     private void initShoppingCartProductAdapter() {
         RecyclerView rvShoppingCartProduct = binding.rvShoppingCartProduct;
-        ArrayList<Product> productList = new ArrayList<>();
+        ArrayList<ProductModel> productList = new ArrayList<>();
 
 //        ShoppingCartProductAdapter.SwipeToDeleteCallback swipeToDeleteCallback = new ShoppingCartProductAdapter.SwipeToDeleteCallback();
 
         for (int i = 0; i < 5 ; i++) {
-            Product p = new Product(i, "Global Gaming Test", 79.99, 19.00);
+            ProductModel p = new ProductModel(i, "Global Gaming Test", 79.99, 19.00);
             productList.add(p);
         }
 

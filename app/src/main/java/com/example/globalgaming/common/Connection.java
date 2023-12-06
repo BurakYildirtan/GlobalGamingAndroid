@@ -1,13 +1,6 @@
-package com.example.globalgaming.domain;
-
-import android.os.AsyncTask;
-
-
+package com.example.globalgaming.common;
 
 import okhttp3.*;
-
-
-
 import javax.net.ssl.*;
 import java.io.IOException;
 import java.security.cert.CertificateException;
@@ -21,32 +14,31 @@ import org.json.JSONException;
 //handles the connection to the backend
 public class Connection {
     //the internal ip adress and port to reach the backend
-    private static final String BASE_URL = "";
 
-    public static void getResponse(String url, final ResponseCallback callback) {
-        AsyncTask<Void, Void, ResponseResult> asyncTask = new AsyncTask<Void, Void, ResponseResult>() {
-            @Override
-            protected ResponseResult doInBackground(Void... params) {
-                try {
-                    String fullUrl = BASE_URL + url;
-                    JSONArray response = performRequest(fullUrl);
-                    return new ResponseResult(response);
-                } catch (IOException | JSONException e) {
-                    return new ResponseResult(e);
-                }
-            }
-
-            @Override
-            protected void onPostExecute(ResponseResult result) {
-                if (result.isSuccessful()) {
-                    callback.onSuccess(result.getResponse());
-                } else {
-                    callback.onError(result.getException());
-                }
-            }
-        };
-        asyncTask.execute();
-    }
+//    public static void getResponse(String url, final ResponseCallback callback) {
+//        AsyncTask<Void, Void, ResponseResult> asyncTask = new AsyncTask<Void, Void, ResponseResult>() {
+//            @Override
+//            protected ResponseResult doInBackground(Void... params) {
+//                try {
+//                    String fullUrl = BASE_URL + url;
+//                    JSONArray response = performRequest(fullUrl);
+//                    return new ResponseResult(response);
+//                } catch (IOException | JSONException e) {
+//                    return new ResponseResult(e);
+//                }
+//            }
+//
+//            @Override
+//            protected void onPostExecute(ResponseResult result) {
+//                if (result.isSuccessful()) {
+//                    callback.onSuccess(result.getResponse());
+//                } else {
+//                    callback.onError(result.getException());
+//                }
+//            }
+//        };
+//        asyncTask.execute();
+//    }
 
 
     //performs a request via OkHttpClient
@@ -67,8 +59,26 @@ public class Connection {
         }
     }
 
+    public static JSONArray performRequestBaseUrl(String url) throws IOException, JSONException {
+        String fullUrl = Constants.BASE_URL + url;
+        OkHttpClient client = getOkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(fullUrl)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (response.isSuccessful()) {
+                String responseBody = response.body().string();
+                return new JSONArray(responseBody);
+            } else {
+                throw new IOException("Unexpected response code: " + response.code());
+            }
+        }
+    }
+
     //builds a new OkHttpClient with required certificates and ssl socket
-    private static OkHttpClient getOkHttpClient() {
+    public static OkHttpClient getOkHttpClient() {
         try {
             TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
@@ -89,8 +99,6 @@ public class Connection {
 
             SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-
-
 
             return new OkHttpClient.Builder()
                     .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustAllCerts[0])
