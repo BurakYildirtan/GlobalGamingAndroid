@@ -9,11 +9,11 @@ import java.util.Date;
 
 public class UserModel {
     private int id;
-    private String userName;
+    private String email;
     private String password;
     private String role;
 
-    private Date date;
+    private String birthday;
 
     private String street;
 
@@ -24,29 +24,34 @@ public class UserModel {
 
 
     public UserModel(int id,
-                     String userName,
+                     String email,
                      String password,
-                     Date date,
+                     String birthday,
                      String street,
                      String postalCode,
                      String city,
                      String role) {
         this.id = id;
-        this.userName = userName;
+        this.email = email;
         this.password = password;
-        this.date = date;
+        this.birthday = birthday;
         this.street = street;
         this.postalCode = postalCode;
         this.city = city;
         this.role = role;
     }
 
+    //TODO birthday Armin
     public UserModel(JSONObject userData) {
         try {
             this.id = userData.getInt(Constants.USER_MODEL_ID);
-            this.userName = userData.getString(Constants.USER_MODEL_USER_NAME);
+            this.email = userData.getString(Constants.USER_MODEL_EMAIL);
             this.password = userData.getString(Constants.USER_MODEL_PASSWORD);
             this.role = userData.getString(Constants.USER_MODEL_ROLE);
+            this.birthday = userData.getString(Constants.USER_MODEL_BIRTHDAY);
+            this.street = userData.getString(Constants.USER_MODEL_STREET);
+            this.postalCode = userData.getString(Constants.USER_MODEL_POSTAL_CODE);
+            this.city = userData.getString(Constants.USER_MODEL_CITY);
         } catch (JSONException e) {
             throw new RuntimeException();
         }
@@ -56,15 +61,15 @@ public class UserModel {
         return id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public Date getDate() {return date;}
+    public String getBirthday() {return birthday;}
 
     public String getStreet() {return street;}
 

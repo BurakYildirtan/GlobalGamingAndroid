@@ -11,4 +11,6 @@ public interface UserRepository {
 
     void loginUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback);
 
+    void registerUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback);
+
 }

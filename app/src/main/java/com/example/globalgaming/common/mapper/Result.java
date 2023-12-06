@@ -1,4 +1,4 @@
-package com.example.globalgaming.common;
+package com.example.globalgaming.common.mapper;
 
 public class Result<T> {
     private final T value;

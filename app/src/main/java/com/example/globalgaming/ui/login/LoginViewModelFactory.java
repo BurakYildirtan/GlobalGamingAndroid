@@ -16,8 +16,8 @@ public class LoginViewModelFactory implements ViewModelProvider.Factory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        if (modelClass.equals(LoginViewModel.class)) {
-            return (T) new LoginViewModel(userRepository);
+        if (modelClass.equals(UserViewModel.class)) {
+            return (T) new UserViewModel(userRepository);
         } else {
             throw new IllegalArgumentException("Unbekanntes ViewModel: " + modelClass.getName());
         }

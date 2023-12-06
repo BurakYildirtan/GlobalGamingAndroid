@@ -1,6 +1,6 @@
 package com.example.globalgaming.common.callbacks;
 
-import com.example.globalgaming.common.Result;
+import com.example.globalgaming.common.mapper.Result;
 
 public interface ResultCallback<T> {
     void onSuccess(Result<T> response);

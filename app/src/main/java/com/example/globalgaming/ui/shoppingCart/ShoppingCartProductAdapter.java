@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.globalgaming.R;
-import com.example.globalgaming.common.FormatHelpers;
+import com.example.globalgaming.common.helper.FormatHelpers;
 import com.example.globalgaming.domain.model.ProductModel;
 
 import java.util.List;

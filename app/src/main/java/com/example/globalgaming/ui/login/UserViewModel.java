@@ -6,19 +6,19 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.globalgaming.common.Result;
+import com.example.globalgaming.common.mapper.Result;
 import com.example.globalgaming.common.callbacks.ResultCallback;
 import com.example.globalgaming.domain.model.UserModel;
 import com.example.globalgaming.domain.repository.UserRepository;
 
 import org.json.JSONObject;
 
-public class LoginViewModel extends ViewModel {
+public class UserViewModel extends ViewModel {
 
     private final UserRepository userRepository;
     private MutableLiveData<Result<UserModel>> userModelResult = new MutableLiveData<>();
 
-    public LoginViewModel(UserRepository userRepository) {
+    public UserViewModel(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -30,7 +30,7 @@ public class LoginViewModel extends ViewModel {
         userRepository.loginUser(userData, new ResultCallback<UserModel>() {
             @Override
             public void onSuccess(Result<UserModel> response) {
-                Log.d("s","Hat funkioniert "+ response.getValue().getUserName());
+                Log.d("s","Hat funkioniert "+ response.getValue().getEmail());
                 userModelResult.postValue(response);
             }
 
@@ -39,6 +39,10 @@ public class LoginViewModel extends ViewModel {
                 userModelResult.postValue(error);
             }
         });
+    }
+
+    public void registerUser(JSONObject userData) {
+
     }
 
 }

@@ -11,20 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.globalgaming.R;
 import com.example.globalgaming.TheApp;
 import com.example.globalgaming.common.Constants;
-import com.example.globalgaming.common.Result;
 import com.example.globalgaming.databinding.FragmentLoginBinding;
-import com.example.globalgaming.domain.model.UserModel;
 import com.example.globalgaming.domain.repository.UserRepository;
 import com.example.globalgaming.ui.main.MainFragment;
 import com.example.globalgaming.ui.registration.RegistrationFragment;
 import com.google.android.material.button.MaterialButton;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,7 +29,7 @@ public class LoginFragment extends Fragment {
 
    @Nullable private FragmentLoginBinding binding;
    private FragmentTransaction fragmentTransaction;
-   private LoginViewModel loginViewModel;
+   private UserViewModel userViewModel;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -44,13 +40,11 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initViewModel();
+        initSharedViewModel();
     }
 
-    private void initViewModel() {
-        UserRepository userRepository = TheApp.appModule.getUserRepository();
-        LoginViewModelFactory loginViewModelFactory = new LoginViewModelFactory(userRepository);
-        loginViewModel = new ViewModelProvider(this, loginViewModelFactory).get(LoginViewModel.class);
+    private void initSharedViewModel() {
+        userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
     }
 
     @Nullable
@@ -71,9 +65,11 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initBtnLogin();
         initBtnGoToRegistration();
+        initLiveDataObserver();
     }
 
     private void initBtnLogin() {
+        assert binding != null;
         MaterialButton btnLogin = binding.btnLogin;
         btnLogin.setOnClickListener( view -> {
             String typedUserNameRes = binding.etEmail.getText().toString();
@@ -81,70 +77,13 @@ public class LoginFragment extends Fragment {
 
             JSONObject userData = new JSONObject();
             try {
-                userData.put(Constants.USER_MODEL_USER_NAME,  typedUserNameRes);
+                userData.put(Constants.USER_MODEL_EMAIL,  typedUserNameRes);
                 userData.put(Constants.USER_MODEL_PASSWORD, typedPasswordRes);
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }
-            loginViewModel.loginUser(userData);
-
-
-//            Connection.getResponse(Constants.USER_LOGIN, new ResponseCallback() {
-//                //gets the current extractions as a json array
-//                @Override
-//                public void onSuccess(JSONArray response) {
-//                    try {
-//                        Log.d("usersAll", ""+response);
-//                        checkUser(response);
-//                    } catch (Exception e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                }
-//
-//                @Override
-//                public void onError(Exception e) {
-//                    // Behandle den Fehler
-//                    e.printStackTrace();
-//                }
-//            });
+            userViewModel.loginUser(userData);
         });
-
-        loginViewModel.getUserModelResult().observe(getViewLifecycleOwner(), new Observer<Result<UserModel>>() {
-            @Override
-            public void onChanged(Result<UserModel> userModelResult) {
-                if (userModelResult.isSuccess()) {
-                    goToMainFragment();
-                }
-                else {
-                    Toast.makeText(getContext(), "Hallo", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-    private void checkUser(JSONArray users) {
-        if (binding != null) {
-            String typedUserNameRes = binding.etEmail.getText().toString();
-            String typedPasswordRes = binding.etPassword.getText().toString();
-
-            for (int i = 0; i < users.length(); i++) {
-                try {
-                    JSONObject user = users.getJSONObject(i);
-
-                    String userName = user.getString("userName");
-                    String password = user.getString("password");
-
-                    if (userName.equals(typedUserNameRes) && password.equals(typedPasswordRes)) {
-                        goToMainFragment();
-                    }
-                    else {
-                        Toast.makeText(this.getContext(), "UserName oder Password falsch", Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (JSONException e) {
-                }
-            }
-        }
     }
 
 
@@ -160,9 +99,21 @@ public class LoginFragment extends Fragment {
     }
 
     private void initBtnGoToRegistration() {
+        assert binding != null;
         MaterialButton btnGoToRegistration = binding.btnGoToRegistration;
         btnGoToRegistration.setOnClickListener( view -> {
             goToRegistration();
+        });
+    }
+
+    private void initLiveDataObserver() {
+        userViewModel.getUserModelResult().observe(getViewLifecycleOwner(), userModelResult -> {
+            if (userModelResult.isSuccess()) {
+                goToMainFragment();
+            }
+            else {
+                Toast.makeText(getContext(), getString(R.string.login_failed), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

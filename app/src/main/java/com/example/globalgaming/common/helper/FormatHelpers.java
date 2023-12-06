@@ -1,4 +1,4 @@
-package com.example.globalgaming.common;
+package com.example.globalgaming.common.helper;
 
 import java.text.DecimalFormat;
 import java.text.Format;

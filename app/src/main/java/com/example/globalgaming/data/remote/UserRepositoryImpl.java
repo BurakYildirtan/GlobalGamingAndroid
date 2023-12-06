@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.example.globalgaming.common.Connection;
 import com.example.globalgaming.common.Constants;
-import com.example.globalgaming.common.Result;
+import com.example.globalgaming.common.mapper.Result;
 import com.example.globalgaming.common.callbacks.ResultCallback;
 import com.example.globalgaming.domain.model.UserModel;
 import com.example.globalgaming.domain.repository.UserRepository;
@@ -24,6 +24,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class UserRepositoryImpl implements UserRepository {
+
+
+
 
     @Override
     public void loginUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback) {
@@ -49,7 +52,7 @@ public class UserRepositoryImpl implements UserRepository {
                     UserModel userModel = new UserModel(user1);
 
 
-                    if (userModel.getUserName().equals(typedUserData.getString(Constants.USER_MODEL_USER_NAME)) && userModel.getPassword().equals(typedUserData.getString(Constants.USER_MODEL_PASSWORD))) {
+                    if (userModel.getEmail().equals(typedUserData.getString(Constants.USER_MODEL_EMAIL)) && userModel.getPassword().equals(typedUserData.getString(Constants.USER_MODEL_PASSWORD))) {
                         responseCallback.onSuccess(Result.success(userModel));
                     }
                     else {
@@ -63,6 +66,11 @@ public class UserRepositoryImpl implements UserRepository {
                 }
             }
         });
+    }
+
+    @Override
+    public void registerUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback) {
+
     }
 }
 
