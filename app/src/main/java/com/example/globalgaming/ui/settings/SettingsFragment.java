@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -18,6 +19,8 @@ import com.example.globalgaming.ui.login.LoginFragment;
 import com.example.globalgaming.ui.login.UserViewModel;
 import com.example.globalgaming.ui.main.MainFragment;
 import com.google.android.material.button.MaterialButton;
+
+import java.util.Objects;
 
 public class SettingsFragment extends Fragment {
 
@@ -56,14 +59,16 @@ public class SettingsFragment extends Fragment {
     }
 
     private void goToLoginFragment() {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+
         LoginFragment loginFragment = new LoginFragment();
-        FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction()
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, loginFragment, Constants.TAG_LOGIN)
                 .setReorderingAllowed(true)
                 .addToBackStack(null);
 
         fragmentTransaction.commit();
-//        userViewModel.logoutUser();
+        userViewModel.logoutUser();
     }
 
     @Override

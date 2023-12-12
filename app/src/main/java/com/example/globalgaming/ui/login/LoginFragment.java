@@ -118,22 +118,6 @@ public class LoginFragment extends Fragment {
     }
 
     private void goToRegistration() {
-//        @Nullable Fragment registrationFragment = getParentFragmentManager().findFragmentByTag(Constants.TAG_REGISTRATION);
-//
-//        if (registrationFragment != null) {
-//            fragmentTransaction = getParentFragmentManager().beginTransaction()
-//                    .replace(R.id.fragment_container, registrationFragment, Constants.TAG_REGISTRATION)
-//                    .setReorderingAllowed(true)
-//                    .addToBackStack(null);
-//        }
-//        else {
-//            RegistrationFragment newRegistrationFragment = new RegistrationFragment();
-//
-//            fragmentTransaction = getParentFragmentManager().beginTransaction()
-//                    .replace(R.id.fragment_container, newRegistrationFragment, Constants.TAG_REGISTRATION)
-//                    .setReorderingAllowed(true)
-//                    .addToBackStack(null);
-//        }
         RegistrationFragment newRegistrationFragment = new RegistrationFragment();
         fragmentTransaction = getParentFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, newRegistrationFragment, Constants.TAG_REGISTRATION)
