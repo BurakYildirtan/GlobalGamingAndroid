@@ -76,6 +76,7 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void initBtnGoToLogin() {
+        assert binding != null;
         MaterialButton btnGoToLogin = binding.btnGoToLogin;
         btnGoToLogin.setOnClickListener( view1 -> {
             goToLogin();
@@ -83,23 +84,6 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void goToLogin() {
-//        @Nullable Fragment loginFragment = getParentFragmentManager().findFragmentByTag(Constants.TAG_LOGIN);
-//
-//        if (loginFragment != null) {
-//            fragmentTransaction = getParentFragmentManager().beginTransaction()
-//                    .replace(R.id.fragment_container, loginFragment, Constants.TAG_LOGIN)
-//                    .setReorderingAllowed(true)
-//                    .addToBackStack(null);
-//        }
-//        else {
-//            LoginFragment newLoginFragment = new LoginFragment();
-//
-//            fragmentTransaction = getParentFragmentManager().beginTransaction()
-//                    .replace(R.id.fragment_container, newLoginFragment, Constants.TAG_LOGIN)
-//                    .setReorderingAllowed(true)
-//                    .addToBackStack(null);
-//        }
-
         LoginFragment newLoginFragment = new LoginFragment();
 
         fragmentTransaction = getParentFragmentManager().beginTransaction()

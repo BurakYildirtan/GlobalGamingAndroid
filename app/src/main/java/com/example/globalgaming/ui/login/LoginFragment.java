@@ -92,8 +92,8 @@ public class LoginFragment extends Fragment {
         MainFragment mainFragment = new MainFragment();
         fragmentTransaction = getParentFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, mainFragment, Constants.TAG_MAIN)
-                .setReorderingAllowed(true);
-//                .addToBackStack(null);
+                .setReorderingAllowed(true)
+                .addToBackStack(null);
 
         fragmentTransaction.commit();
     }

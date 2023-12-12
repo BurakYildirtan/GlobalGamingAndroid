@@ -45,4 +45,8 @@ public class UserViewModel extends ViewModel {
 
     }
 
+    public void logoutUser() {
+        userModelResult = new MutableLiveData<>();
+    }
+
 }
