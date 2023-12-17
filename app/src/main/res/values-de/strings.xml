@@ -72,5 +72,6 @@
     <string name="percent">Prozent</string>
     <string name="login_failed">Email oder Passwort ist falsch. Versuche es erneut.</string>
     <string name="user_data_could_not_load">Deine Daten konnten nicht geladen werden. Versuche es später erneut.</string>
+    <string name="user_name">Username</string>
 
 </resources>

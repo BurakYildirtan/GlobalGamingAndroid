@@ -17,20 +17,33 @@ public class UserRepositoryImplTest implements UserRepository {
     public void loginUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback) {
         try {
             String jString = "[\n" +
-                    "  {\"userId\":1,\"userName\":\"buraki\",\"role\":\"admin\",\"password\":\"Test123\"},\n" +
-                    "  {\"userId\":2,\"userName\":\"rovcanar\",\"role\":\"admin\",\"password\":\"Test123\"},\n" +
-                    "  {\"userId\":3,\"userName\":\"user3@example.com\",\"role\":\"admin\",\"password\":\"passwort\",\"birthday\":\"2000-01-01\",\"street\":\"Street3\",\"postalCode\":\"12345\",\"city\":\"City3\"},\n" +
-                    "  {\"userId\":4,\"userName\":\"user4@example.com\",\"role\":\"user\",\"password\":\"passwort\",\"birthday\":\"2000-01-01\",\"street\":\"Street4\",\"postalCode\":\"12345\",\"city\":\"City4\"},\n" +
-                    "  {\"userId\":5,\"userName\":\"user5@example.com\",\"role\":\"user\",\"password\":\"passwort\",\"birthday\":\"2000-01-01\",\"street\":\"Street5\",\"postalCode\":\"12345\",\"city\":\"City5\"},\n" +
-                    "  {\"userId\":6,\"userName\":\"user6@example.com\",\"role\":\"user\",\"password\":\"passwort\",\"birthday\":\"2000-01-01\",\"street\":\"Street6\",\"postalCode\":\"12345\",\"city\":\"City6\"},\n" +
-                    "  {\"userId\":7,\"userName\":\"user7@example.com\",\"role\":\"user\",\"password\":\"passwort\",\"birthday\":\"2000-01-01\",\"street\":\"Street7\",\"postalCode\":\"12345\",\"city\":\"City7\"},\n" +
-                    "  {\"userId\":8,\"userName\":\"user8@example.com\",\"role\":\"user\",\"password\":\"passwort\",\"birthday\":\"2000-01-01\",\"street\":\"Street8\",\"postalCode\":\"12345\",\"city\":\"City8\"},\n" +
-                    "  {\"userId\":9,\"userName\":\"user9@example.com\",\"role\":\"user\",\"password\":\"passwort\",\"birthday\":\"2000-01-01\",\"street\":\"Street9\",\"postalCode\":\"12345\",\"city\":\"City9\"},\n" +
-                    "  {\"userId\":10,\"userName\":\"user10@example.com\",\"role\":\"user\",\"password\":\"passwort\",\"birthday\":\"2000-01-01\",\"street\":\"Street10\",\"postalCode\":\"12345\",\"city\":\"City10\"}\n" +
-                    "]\n";
+                    "  {\n" +
+                    "    \"userId\": 1,\n" +
+                    "    \"userName\": \"rovcanar\",\n" +
+                    "    \"role\": \"admin\",\n" +
+                    "    \"password\": \"test\",\n" +
+                    "    \"email\": \"rovcanar@hs-albsig.de\",\n" +
+                    "    \"bday\": \"Dec 23, 2023, 12:00:00 AM\",\n" +
+                    "    \"street\": \"musterstraße 20\",\n" +
+                    "    \"pcode\": 72760,\n" +
+                    "    \"city\": \"Reutlingen\"\n" +
+                    "  },\n" +
+                    "  {\n" +
+                    "    \"userId\": 2,\n" +
+                    "    \"userName\": \"yildirbu\",\n" +
+                    "    \"role\": \"user\",\n" +
+                    "    \"password\": \"test\",\n" +
+                    "    \"email\": \"yildirbu@hs-albsig.de\",\n" +
+                    "    \"bday\": \"Dec 23, 2023, 12:00:00 AM\",\n" +
+                    "    \"street\": \"musterstraße 20\",\n" +
+                    "    \"pcode\": 72355,\n" +
+                    "    \"city\": \"Schömberg\"\n" +
+                    "  }\n" +
+                    "]";
+
             JSONArray result = new JSONArray(jString);
             //TODO Test
-            JSONObject user1 = (JSONObject) result.get(2);
+            JSONObject user1 = (JSONObject) result.get(0);
             UserModel userModel = new UserModel(user1);
 
 

@@ -8,23 +8,25 @@ import org.json.JSONObject;
 import java.util.Date;
 
 public class UserModel {
-    private int id;
-    private String email;
-    private String password;
-    private String role;
+    private final int id;
+    private final String email;
+    private final String userName;
+    private final String password;
+    private final String role;
 
-    private String birthday;
+    private final String birthday;
 
-    private String street;
+    private final String street;
 
-    private String postalCode;
+    private final String postalCode;
 
-    private String city;
+    private final String city;
 
 
 
     public UserModel(int id,
                      String email,
+                     String userName,
                      String password,
                      String birthday,
                      String street,
@@ -33,6 +35,7 @@ public class UserModel {
                      String role) {
         this.id = id;
         this.email = email;
+        this.userName = userName;
         this.password = password;
         this.birthday = birthday;
         this.street = street;
@@ -41,11 +44,11 @@ public class UserModel {
         this.role = role;
     }
 
-    //TODO birthday Armin
     public UserModel(JSONObject userData) {
         try {
             this.id = userData.getInt(Constants.USER_MODEL_ID);
             this.email = userData.getString(Constants.USER_MODEL_EMAIL);
+            this.userName = userData.getString(Constants.USER_MODEL_USER_NAME);
             this.password = userData.getString(Constants.USER_MODEL_PASSWORD);
             this.role = userData.getString(Constants.USER_MODEL_ROLE);
             this.birthday = userData.getString(Constants.USER_MODEL_BIRTHDAY);
@@ -78,4 +81,6 @@ public class UserModel {
     public String getCity() {return city;}
 
     public String getRole() {return role; }
+
+    public String getUserName() {return userName; }
 }

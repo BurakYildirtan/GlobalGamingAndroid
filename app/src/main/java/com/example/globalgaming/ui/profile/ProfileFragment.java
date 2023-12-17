@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.globalgaming.R;
+import com.example.globalgaming.common.helper.FormatHelpers;
 import com.example.globalgaming.databinding.FragmentProfileBinding;
 import com.example.globalgaming.domain.model.UserModel;
 import com.example.globalgaming.ui.login.UserViewModel;
@@ -76,6 +77,7 @@ public class ProfileFragment extends Fragment {
     //TODO BirthDay look up for this
     private void setUserDataInFields(UserModel userModel) {
         assert binding != null;
+        TextInputEditText etUserName = binding.etUserName;
         TextInputEditText etEmail = binding.etEmail;
         TextInputEditText etPassword = binding.etPassword;
         TextInputEditText etBirthday = binding.etBirthday;
@@ -83,9 +85,10 @@ public class ProfileFragment extends Fragment {
         TextInputEditText etPostalCode = binding.etPostCode;
         TextInputEditText etCity = binding.etCity;
 
+        etUserName.setText(userModel.getUserName());
         etEmail.setText(userModel.getEmail());
         etPassword.setText(userModel.getPassword());
-        etBirthday.setText("20.04.1998");
+        etBirthday.setText(FormatHelpers.formatDataDateToViewDate(userModel.getBirthday()));
         etStreet.setText(userModel.getStreet());
         etPostalCode.setText(userModel.getPostalCode());
         etCity.setText(userModel.getCity());
@@ -115,25 +118,20 @@ public class ProfileFragment extends Fragment {
             binding.btnCancel.setVisibility(View.GONE);
             binding.btnConfirm.setVisibility(View.GONE);
 
-            binding.tilEmail.setEnabled(enableEdit);
-            binding.tilPassword.setEnabled(enableEdit);
-            binding.tilBirthday.setEnabled(enableEdit);
-            binding.tilStreet.setEnabled(enableEdit);
-            binding.tilPostalCode.setEnabled(enableEdit);
-            binding.tilCity.setEnabled(enableEdit);
-
         } else {
             enableEdit = true;
             binding.btnEdit.setVisibility(View.GONE);
             binding.btnCancel.setVisibility(View.VISIBLE);
             binding.btnConfirm.setVisibility(View.VISIBLE);
 
-            binding.tilEmail.setEnabled(enableEdit);
-            binding.tilPassword.setEnabled(enableEdit);
-            binding.tilBirthday.setEnabled(enableEdit);
-            binding.tilStreet.setEnabled(enableEdit);
-            binding.tilPostalCode.setEnabled(enableEdit);
-            binding.tilCity.setEnabled(enableEdit);
         }
+
+        binding.tilEmail.setEnabled(enableEdit);
+        binding.tilPassword.setEnabled(enableEdit);
+        binding.tilBirthday.setEnabled(enableEdit);
+        binding.tilStreet.setEnabled(enableEdit);
+        binding.tilPostalCode.setEnabled(enableEdit);
+        binding.tilCity.setEnabled(enableEdit);
+        binding.tilUserName.setEnabled(enableEdit);
     }
 }

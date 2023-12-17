@@ -14,11 +14,15 @@ public class Constants {
 
     //UserModel
     public static final String USER_MODEL_ID = "userId";
-    public static final String USER_MODEL_EMAIL = "userName";
+    public static final String USER_MODEL_EMAIL = "email";
     public static final String USER_MODEL_ROLE = "role";
     public static final String USER_MODEL_PASSWORD = "password";
-    public static final String USER_MODEL_BIRTHDAY = "birthday";
+    public static final String USER_MODEL_BIRTHDAY = "bday";
     public static final String USER_MODEL_STREET = "street";
-    public static final String USER_MODEL_POSTAL_CODE = "postalCode";
+    public static final String USER_MODEL_POSTAL_CODE = "pcode";
     public static final String USER_MODEL_CITY = "city";
+    public static final String USER_MODEL_USER_NAME = "userName";
+
+
+
 }
