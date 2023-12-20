@@ -1,11 +1,14 @@
 package com.example.globalgaming.domain.repository;
 
 import com.example.globalgaming.common.callbacks.ResultCallback;
+import com.example.globalgaming.domain.model.ProductModel;
 import com.example.globalgaming.domain.model.SoftwareModel;
 
 import org.json.JSONObject;
 
+import java.util.List;
+
 public interface HardwareRepository {
 
-    void getHardware(JSONObject typedUserData, ResultCallback<SoftwareModel> resultCallback);
+    void getHardwareAll(ResultCallback<List<ProductModel>> resultCallback);
 }

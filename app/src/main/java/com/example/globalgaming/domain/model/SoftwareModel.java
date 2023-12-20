@@ -77,4 +77,7 @@ public class SoftwareModel {
     public int getFsk() {
         return fsk;
     }
+
+    public Boolean isInSale() { return saleInPercent != 0.0;}
 }
+

@@ -77,4 +77,6 @@ public class HardwareModel {
     public String getManufacturer() {
         return manufacturer;
     }
+
+    public Boolean isInSale() { return saleInPercent != 0.0;}
 }

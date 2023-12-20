@@ -41,36 +41,36 @@ public class ShoppingCartProductAdapter extends RecyclerView.Adapter<ShoppingCar
 
         initTitle(holder, product);
 
-        if (product.getSaleInPercent() != 0.0 ) {
-            initProductPriceSale(holder,product);
-        } else  {
-            initProductPrice(holder, product);
-        }
+//        if (product.getSaleInPercent() != 0.0 ) {
+//            initProductPriceSale(holder,product);
+//        } else  {
+//            initProductPrice(holder, product);
+//        }
 //        holder.itemView.setOnClickListener(view -> onItemClickListener.onClick(holder.imageView, arrayList.get(position)));
     }
 
     private void initTitle(ViewHolder holder, ProductModel product) {
-        String title = product.getTitle();
-        holder.productTitle.setText(title);
+//        String title = product.getTitle();
+//        holder.productTitle.setText(title);
     }
 
     private void initProductPrice(ViewHolder holder, ProductModel product) {
-        String productPrice = FormatHelpers.formatPriceAndCurrency(product.getPrice(), "€");
-        holder.productPrice.setText(productPrice);
-        holder.productPriceSale.setVisibility(View.GONE);
+//        String productPrice = FormatHelpers.formatPriceAndCurrency(product.getPrice(), "€");
+//        holder.productPrice.setText(productPrice);
+//        holder.productPriceSale.setVisibility(View.GONE);
     }
 
     private void initProductPriceSale(ViewHolder holder, ProductModel product) {
-        Double price = product.getPrice();
-        Double saleInPercent = product.getSaleInPercent();
-        Double priceSale = FormatHelpers.calculatePriceWithSale(price, saleInPercent);
-
-        String productSalePrice = FormatHelpers.formatPriceAndCurrency(priceSale, "€");
-        String productPrice = FormatHelpers.formatPriceAndCurrency(price, "€");
-
-        holder.productPrice.setText(productSalePrice);
-        holder.productPriceSale.setText(productPrice);
-        holder.productPriceSale.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+//        Double price = product.getPrice();
+//        Double saleInPercent = product.getSaleInPercent();
+//        Double priceSale = FormatHelpers.calculatePriceWithSale(price, saleInPercent);
+//
+//        String productSalePrice = FormatHelpers.formatPriceAndCurrency(priceSale, "€");
+//        String productPrice = FormatHelpers.formatPriceAndCurrency(price, "€");
+//
+//        holder.productPrice.setText(productSalePrice);
+//        holder.productPriceSale.setText(productPrice);
+//        holder.productPriceSale.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
     }
 
     @Override

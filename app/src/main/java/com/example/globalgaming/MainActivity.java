@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.globalgaming.databinding.ActivityMainBinding;
 import com.example.globalgaming.ui.login.LoginViewModelFactory;
 import com.example.globalgaming.ui.login.UserViewModel;
+import com.example.globalgaming.ui.shoppingCart.ShoppingCartViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         UserRepository userRepository = TheApp.appModule.getUserRepository();
         LoginViewModelFactory loginViewModelFactory = new LoginViewModelFactory(userRepository);
         new ViewModelProvider(this, loginViewModelFactory).get(UserViewModel.class);
+        new ViewModelProvider(this).get(ShoppingCartViewModel.class);
     }
 
 }

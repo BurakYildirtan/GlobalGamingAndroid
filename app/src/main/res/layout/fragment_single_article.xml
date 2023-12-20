@@ -35,6 +35,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/Widget.Material3.Button.TextButton"
+                    android:id="@+id/btn_go_back"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     app:icon="@drawable/ic_arrow_left"
@@ -48,6 +49,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/TextAppearance.Material3.ActionBar.Title"
+                    android:id="@+id/tv_toolbar_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/loading_dots"
@@ -57,18 +59,14 @@
 
             </com.google.android.material.appbar.MaterialToolbar>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_category"
+            <ImageView
+                android:id="@+id/iv_single_article"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:clipChildren="false"
-                android:clipToPadding="false"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="24dp"
-                app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"
-                android:orientation="horizontal"
                 />
 
             <com.google.android.material.divider.MaterialDivider
@@ -78,7 +76,7 @@
                 android:layout_height="1dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_category"
+                app:layout_constraintTop_toBottomOf="@id/iv_single_article"
                 android:layout_marginTop="24dp"
                 android:layout_marginHorizontal="8dp"
                 />
@@ -99,10 +97,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/TextAppearance.Material3.TitleMedium"
-                android:id="@+id/tv_genre_title"
+                android:id="@+id/tv_spec_1_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/genre"
+                android:text="@string/loading_dots"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_specification_title"
                 android:layout_marginStart="16dp"
@@ -112,12 +110,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/TextAppearance.Material3.TitleMedium"
-                android:id="@+id/tv_player_title"
+                android:id="@+id/tv_spec_2_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/player"
+                android:text="@string/loading_dots"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_genre_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_spec_1_title"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:textColor="?attr/colorOnSurface"
@@ -125,12 +123,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/TextAppearance.Material3.TitleMedium"
-                android:id="@+id/tv_publication_title"
+                android:id="@+id/tv_spec_3_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/publication"
+                android:text="@string/loading_dots"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_player_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_spec_2_title"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:textColor="?attr/colorOnSurface"
@@ -141,44 +139,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="end"
-                app:constraint_referenced_ids="tv_genre_title,tv_player_title, tv_publication_title" />
+                app:constraint_referenced_ids="tv_spec_1_title,tv_spec_2_title, tv_spec_3_title" />
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/TextAppearance.Material3.BodyMedium"
-                android:id="@+id/tv_genre_content"
+                android:id="@+id/tv_spec_1_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/loading_dots"
                 app:layout_constraintStart_toStartOf="@id/barrier_specification_title_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_specification_title"
+                app:layout_constraintTop_toTopOf="@id/tv_spec_1_title"
+                app:layout_constraintBottom_toBottomOf="@id/tv_spec_1_title"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:textColor="?attr/colorOnSurface"
                 />
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/TextAppearance.Material3.BodyMedium"
-                android:id="@+id/tv_player_content"
+                android:id="@+id/tv_spec_2_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/loading_dots"
                 app:layout_constraintStart_toStartOf="@id/barrier_specification_title_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_genre_title"
+                app:layout_constraintTop_toTopOf="@id/tv_spec_2_title"
+                app:layout_constraintBottom_toBottomOf="@id/tv_spec_2_title"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:textColor="?attr/colorOnSurface"
                 />
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/TextAppearance.Material3.BodyMedium"
-                android:id="@+id/tv_publication_content"
+                android:id="@+id/tv_spec_3_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/loading_dots"
                 app:layout_constraintStart_toStartOf="@id/barrier_specification_title_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_player_content"
+                app:layout_constraintTop_toTopOf="@id/tv_spec_3_title"
+                app:layout_constraintBottom_toBottomOf="@id/tv_spec_3_title"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:textColor="?attr/colorOnSurface"
                 />
 
@@ -189,7 +187,7 @@
                 android:layout_height="1dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_publication_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_spec_3_title"
                 android:layout_marginTop="24dp"
                 android:layout_marginHorizontal="8dp"
                 />

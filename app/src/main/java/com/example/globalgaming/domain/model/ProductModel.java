@@ -1,32 +1,28 @@
 package com.example.globalgaming.domain.model;
 
-public class ProductModel {
+
+import java.io.Serializable;
+
+public class ProductModel<T> implements Serializable {
     private final int id;
-    private final String title;
-    private final Double price;
 
-    private final Double saleInPercent;
+    private  T modelData;
 
-    public ProductModel(int id, String title, Double price, Double saleInPercent) {
+    public ProductModel(int id, HardwareModel hardwareModel) {
         this.id = id;
-        this.title = title;
-        this.price = price;
-        this.saleInPercent = saleInPercent;
+        this.modelData = (T) hardwareModel;
     }
 
-    public String getTitle() {
-        return title;
+    public ProductModel(int id, SoftwareModel softwareModel) {
+        this.id = id;
+        this.modelData = (T) softwareModel;
     }
 
     public int getId() {
         return id;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public Double getSaleInPercent() {
-        return saleInPercent;
+    public T getModelData() {
+        return modelData;
     }
 }

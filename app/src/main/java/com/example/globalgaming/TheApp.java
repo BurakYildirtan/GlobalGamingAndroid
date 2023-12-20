@@ -19,6 +19,6 @@ public class TheApp extends Application {
         super.onCreate();
 //        appModule = new AppModuleImpl(this);
         //TODO im Test
-        appModule = new AppModuleImplTest(this);
+        appModule = new AppModuleImpl(this);
     }
 }

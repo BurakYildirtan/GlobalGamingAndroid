@@ -61,11 +61,6 @@ public class ShoppingCartFragment extends Fragment {
 
 //        ShoppingCartProductAdapter.SwipeToDeleteCallback swipeToDeleteCallback = new ShoppingCartProductAdapter.SwipeToDeleteCallback();
 
-        for (int i = 0; i < 5 ; i++) {
-            ProductModel p = new ProductModel(i, "Global Gaming Test", 79.99, 19.00);
-            productList.add(p);
-        }
-
         ShoppingCartProductAdapter shoppingCartProductAdapter = new ShoppingCartProductAdapter(getContext(), productList);
         rvShoppingCartProduct.setAdapter(shoppingCartProductAdapter);
     }
