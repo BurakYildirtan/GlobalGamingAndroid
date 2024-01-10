@@ -31,6 +31,10 @@ public class SingleArticleFragment extends Fragment {
     private FragmentSingleArticleBinding binding;
     private NavController navController;
     private ProductModel product;
+    private Boolean isCategory;
+
+    private String title;
+    private int imgId;
     private ShoppingCartViewModel shoppingCartViewModel;
 
     @Override
@@ -38,6 +42,9 @@ public class SingleArticleFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             product = (ProductModel) getArguments().getSerializable("productModel");
+            isCategory = getArguments().getBoolean("isCategory", false);
+            title = getArguments().getString("title", "");
+            imgId = getArguments().getInt("img", 0);
         }
         initSharedViewModel();
 
@@ -137,7 +144,14 @@ public class SingleArticleFragment extends Fragment {
 
     private void initBackButton() {
         binding.btnGoBack.setOnClickListener( view -> {
-            navController.navigate(R.id.action_singleArticleFragment_to_homeFragment);
+            if (isCategory) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("img", imgId);
+                bundle.putString("title", title);
+                navController.navigate(R.id.action_singleArticleFragment_to_categoryFragment, bundle);
+            } else {
+                navController.navigate(R.id.action_singleArticleFragment_to_homeFragment);
+            }
         });
     }
 

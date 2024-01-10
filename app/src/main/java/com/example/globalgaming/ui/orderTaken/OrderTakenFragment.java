@@ -19,18 +19,11 @@ import com.google.android.material.button.MaterialButton;
 
 public class OrderTakenFragment extends Fragment {
 
-    private ShoppingCartViewModel mViewModel;
-
     private FragmentOrderTakenBinding binding;
-
-    public static OrderTakenFragment newInstance() {
-        return new OrderTakenFragment();
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ShoppingCartViewModel.class);
     }
 
     @Override
@@ -38,6 +31,12 @@ public class OrderTakenFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentOrderTakenBinding.inflate(inflater, container, false);
         return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override
@@ -51,8 +50,7 @@ public class OrderTakenFragment extends Fragment {
     private void initContinueShoppingBtn(NavController navController) {
         MaterialButton btnContinueShopping = binding.btnContinueShopping;
         btnContinueShopping.setOnClickListener(view1 -> {
-            //TODO das funktioniert noch nicht richtig
-            //navController.navigate(R.id.action_orderTakenFragment_to_homeFragment);
+            navController.navigate(R.id.action_orderTakenFragment_to_shoppingCartFragment);
         });
     }
 

@@ -63,6 +63,17 @@
 
     </com.google.android.material.appbar.MaterialToolbar>
 
+    <SearchView
+        android:id="@+id/sv_product"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/rv_product"
+        android:hint="@string/product"
+        />
+
     <com.google.android.material.search.SearchBar
         android:id="@+id/sb_product"
         android:layout_width="0dp"
@@ -81,7 +92,7 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sb_product"
+        app:layout_constraintTop_toBottomOf="@id/sv_product"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

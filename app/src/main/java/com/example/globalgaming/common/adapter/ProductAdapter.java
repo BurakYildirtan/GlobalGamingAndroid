@@ -1,5 +1,6 @@
 package com.example.globalgaming.common.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
@@ -19,17 +20,18 @@ import com.example.globalgaming.domain.model.ProductModel;
 import com.example.globalgaming.domain.model.SoftwareModel;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     private final Context context;
-    private final List<ProductModel> productList;
+    private List<ProductModel> productList;
     private OnProductClickListener listener;
 
 
-    public ProductAdapter(Context context, List<ProductModel> productList, OnProductClickListener listener) {
+    public ProductAdapter(Context context, OnProductClickListener listener) {
         this.context = context;
-        this.productList = productList;
+        this.productList = new ArrayList<>();
         this.listener = listener;
     }
 
@@ -95,5 +97,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             productPrice = itemView.findViewById(R.id.tv_product_price);
             productPriceSale = itemView.findViewById(R.id.tv_product_price_sale);
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void addProductList(List<ProductModel> productList) {
+        this.productList = productList;
+        notifyDataSetChanged();
+
     }
 }

@@ -57,6 +57,9 @@ public class Constants {
     public static final String TITLE_KEY_SOFTWARE = "software";
     public static final String TITLE_KEY_HARDWARE = "hardware";
 
+    public static final int BTN_ADD = 1;
+    public static final int BTN_REMOVE = 0;
+
 
 
 }

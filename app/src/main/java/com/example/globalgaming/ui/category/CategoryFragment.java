@@ -1,10 +1,10 @@
 package com.example.globalgaming.ui.category;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,13 +20,12 @@ import com.example.globalgaming.TheApp;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.adapter.ProductAdapter;
 import com.example.globalgaming.databinding.FragmentCategoryBinding;
-import com.example.globalgaming.domain.model.HardwareModel;
 import com.example.globalgaming.domain.model.ProductModel;
-import com.example.globalgaming.domain.model.SoftwareModel;
 import com.example.globalgaming.domain.repository.HardwareRepository;
 import com.example.globalgaming.domain.repository.SaleRepository;
 import com.example.globalgaming.domain.repository.SoftwareRepository;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.search.SearchBar;
 
 import java.util.List;
 
@@ -37,6 +36,7 @@ public class CategoryFragment extends Fragment {
     private String title;
     private int imgId;
     private NavController navController;
+    private ProductAdapter productAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,7 +63,14 @@ public class CategoryFragment extends Fragment {
         binding = FragmentCategoryBinding.inflate(inflater, container, false);
         setCategoryName();
         setCategoryImage();
+        initProductAdapter();
         return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     private void setCategoryName() {
@@ -80,14 +87,14 @@ public class CategoryFragment extends Fragment {
         setBtnGoBackListener();
         getProducts();
         setLiveDataObserver();
-        setSearchbar();
+        setSearchView();
 
     }
 
     private void setLiveDataObserver() {
         categoryViewModel.getProductModelResult().observe(getViewLifecycleOwner(), products -> {
             if (products.isSuccess()) {
-                initProductAdapter(products.getValue());
+                productAdapter.addProductList(products.getValue());
             } else {
                 Toast.makeText(getContext(), getString(R.string.other_failed), Toast.LENGTH_SHORT).show();
             }
@@ -113,9 +120,9 @@ public class CategoryFragment extends Fragment {
         });
     }
 
-    private void initProductAdapter(List<ProductModel> products) {
+    private void initProductAdapter() {
         RecyclerView rvProduct = binding.rvProduct;
-        ProductAdapter productAdapter = new ProductAdapter(this.getContext(), products, product -> {
+        productAdapter = new ProductAdapter(this.getContext(), product -> {
             navigateToSingleArticleFragment(product);
         });
         rvProduct.setAdapter(productAdapter);
@@ -124,10 +131,28 @@ public class CategoryFragment extends Fragment {
     private void navigateToSingleArticleFragment(ProductModel product) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("productModel", product);
+        bundle.putBoolean("isCategory", true);
+        bundle.putInt("img", imgId);
+        bundle.putString("title", title);
         navController.navigate(R.id.action_categoryFragment_to_singleArticleFragment, bundle);
     }
 
-    private void setSearchbar() {
-    }
+    private void setSearchView() {
+        SearchView searchBar = binding.svProduct;
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                productAdapter.addProductList(categoryViewModel.filterList(s));
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String s) {
+                productAdapter.addProductList(categoryViewModel.filterList(s));
+                return false;
+            }
+        });
+
+
+    }
 }

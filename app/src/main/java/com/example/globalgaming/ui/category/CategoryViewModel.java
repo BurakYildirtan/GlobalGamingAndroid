@@ -12,7 +12,9 @@ import com.example.globalgaming.domain.repository.HardwareRepository;
 import com.example.globalgaming.domain.repository.SaleRepository;
 import com.example.globalgaming.domain.repository.SoftwareRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CategoryViewModel extends ViewModel {
 
@@ -75,5 +77,17 @@ public class CategoryViewModel extends ViewModel {
 
     private void getHardwareProducts(ResultCallback<List<ProductModel>> resultCallback) {
         hardwareRepository.getHardwareAll(resultCallback);
+    }
+
+    public List<ProductModel> filterList(String s) {
+        Result<List<ProductModel>> resultProductList = productModelResult.getValue();
+        if (resultProductList != null) {
+            if (resultProductList.isSuccess()) {
+                return resultProductList.getValue().stream()
+                        .filter(item -> item.getDesignation().toLowerCase().contains(s.toLowerCase()))
+                        .collect(Collectors.toList());
+            }
+        }
+        return new ArrayList<>();
     }
 }

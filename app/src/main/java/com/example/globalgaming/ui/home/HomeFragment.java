@@ -32,6 +32,8 @@ public class HomeFragment extends Fragment {
     private FragmentTransaction fragmentTransaction;
     private HomeViewModel homeViewModel;
 
+    private ProductAdapter productAdapter;
+
     private NavController navController;
 
     @Override
@@ -54,7 +56,7 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         initCategoryAdapter();
-
+        initProductAdapter();
         return root;
     }
 
@@ -68,7 +70,7 @@ public class HomeFragment extends Fragment {
     private void setLiveDataObserver() {
         homeViewModel.getProductModelResult().observe(getViewLifecycleOwner(), products -> {
             if (products.isSuccess()) {
-                initProductAdapter(products.getValue());
+                productAdapter.addProductList(products.getValue());
             } else {
                 Toast.makeText(getContext(), getString(R.string.other_failed), Toast.LENGTH_SHORT).show();
             }
@@ -101,9 +103,7 @@ public class HomeFragment extends Fragment {
         CatergoryAdapter categoryAdapter = new CatergoryAdapter(this.getContext(), imgList, titleList);
         rvCategory.setAdapter(categoryAdapter);
 
-        categoryAdapter.setOnItemClickListener((title, img) -> {
-            goToCategory(title, img);
-        });
+        categoryAdapter.setOnItemClickListener(this::goToCategory);
     }
 
     private void goToCategory(String title, Integer img) {
@@ -113,11 +113,9 @@ public class HomeFragment extends Fragment {
         navController.navigate(R.id.action_homeFragment_to_categoryFragment, bundle);
     }
 
-    private void initProductAdapter(List<ProductModel> products) {
+    private void initProductAdapter() {
         RecyclerView rvProduct = binding.rvProduct;
-        ProductAdapter productAdapter = new ProductAdapter(this.getContext(), products, product -> {
-            navigateToSingleArticleFragment(product);
-        });
+        productAdapter = new ProductAdapter(this.getContext(), this::navigateToSingleArticleFragment);
         rvProduct.setAdapter(productAdapter);
     }
 
