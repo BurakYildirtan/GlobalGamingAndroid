@@ -138,7 +138,7 @@ public class CategoryFragment extends Fragment {
     }
 
     private void setSearchView() {
-        SearchView searchBar = binding.svProduct;
+        SearchView searchBar = binding.sbProduct;
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
