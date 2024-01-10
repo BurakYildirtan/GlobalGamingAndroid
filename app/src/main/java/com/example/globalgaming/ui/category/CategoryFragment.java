@@ -80,6 +80,7 @@ public class CategoryFragment extends Fragment {
         setBtnGoBackListener();
         getProducts();
         setLiveDataObserver();
+        setSearchbar();
 
     }
 
@@ -124,6 +125,9 @@ public class CategoryFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putSerializable("productModel", product);
         navController.navigate(R.id.action_categoryFragment_to_singleArticleFragment, bundle);
+    }
+
+    private void setSearchbar() {
     }
 
 }

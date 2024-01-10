@@ -14,6 +14,7 @@
     <string name="email">E-Mail</string>
     <string name="password">Passwort</string>
     <string name="error_wrong_user_input">E-Mail oder Passwort ist nicht korrekt.</string>
+    <string name="something_went_wrong">Etwas ist schiefgelaufen. Versuche es später.</string>
     <!-- Preference Titles -->
     <string name="messages_header">Nachrichten</string>
     <string name="sync_header">Synchronisierung</string>
@@ -78,5 +79,13 @@
     <string name="type">Typ</string>
     <string name="manufacturer">Hersteller</string>
     <string name="added_successfully">Erfolgreich hinzugefügt</string>
+    <string name="company_name">GlobalGaming AG</string>
+    <string name="company_city">72461 Albstadt</string>
+    <string name="company_phone_number">+49 7432 1987979</string>
+    <string name="company_phone_mail">info@globalgaming.de</string>
+    <string name="imprint_company_information_body">Die EU-Kommission hat eine Internetplattform zur Online-Beilegung von Streitigkeiten (sog. „OS-Plattform“) geschaffen. Die OS-Plattform dient als Anlaufstelle zur außergerichtlichen Beilegung von Streitigkeiten betreffend vertragliche Verpflichtungen, die aus Online-Kaufverträgen erwachsen. Sie können die OS-Plattform unter dem folgenden Link erreichen: http://ec.euopa.eu/consumers/odr „Hinweis gemäß § 36 Verbraucherstreitbeilegungsgesetz (VSBG).</string>
+    <string name="imprint_company_information_title">Informationen zur Online-Streitbeilegung:</string>
+    <string name="privacy_policy_body">Wir freuen uns sehr über Ihr Interesse an unserem Unternehmen. Datenschutz hat einen besonders hohen Stellenwert für die Geschäftsleitung der GlobalGaming AG. Eine Nutzung der App der GlobalGaming AG ist grundsätzlich ohne jede Angabe personenbezogener Daten möglich. Sofern eine betroffene Person besondere Services unseres Unternehmens über unsere Internetseite in Anspruch nehmen möchte, könnte jedoch eine Verarbeitung personenbezogener Daten erforderlich werden. Ist die Verarbeitung personenbezogener Daten erforderlich und besteht für eine solche Verarbeitung keine gesetzliche Grundlage, holen wir generell eine Einwilligung der betroffenen Person ein.</string>
+    <string name="terms_and_conditions_body">Mit der Nutzung unserer App akzeptieren Sie unsere Nutzungsbedingungen.</string>
 
 </resources>

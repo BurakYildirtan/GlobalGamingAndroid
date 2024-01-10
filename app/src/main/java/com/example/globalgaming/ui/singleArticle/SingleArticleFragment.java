@@ -15,6 +15,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.globalgaming.R;
+import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.helper.FormatHelpers;
 import com.example.globalgaming.databinding.FragmentSingleArticleBinding;
 import com.example.globalgaming.domain.model.HardwareModel;
@@ -28,9 +29,7 @@ public class SingleArticleFragment extends Fragment {
     private static final String ARG_PRODUCT = "product";
 
     private FragmentSingleArticleBinding binding;
-
     private NavController navController;
-
     private ProductModel product;
     private ShoppingCartViewModel shoppingCartViewModel;
 
@@ -66,71 +65,48 @@ public class SingleArticleFragment extends Fragment {
     }
 
     private void initData() {
-        String picPath;
-        String title;
-        String spec1;
+        String picPath = product.getPicPath();
+        String title = product.getDesignation();
+
+        String spec1Title = getResources().getString(R.string.publication);
+        String spec1 = product.getReleaseDate();
+
         String spec2;
         String spec3;
-        String spec1Title;
         String spec2Title;
         String spec3Title;
 
-        //Image
-        if (product.getModelData() instanceof SoftwareModel) {
-            SoftwareModel p = (SoftwareModel) product.getModelData();
-            picPath = p.getPicPath();
-            title = p.getDesignation();
-            spec1 = p.getReleaseDate();
-            spec2 = p.getGenre();
-            spec3 = String.valueOf(p.getFsk());
-            spec1Title = getResources().getString(R.string.publication);
-            spec2Title = getResources().getString(R.string.genre);
-            spec3Title = getResources().getString(R.string.fsk);
+        if (product.isInSale()) {
+            Double price = product.getPrice();
+            Double saleInPercent = product.getSaleInPercent();
+            Double priceSale = FormatHelpers.calculatePriceWithSale(price, saleInPercent);
 
-            if (p.isInSale()) {
-                Double price = p.getPrice();
-                Double saleInPercent = p.getSaleInPercent();
-                Double priceSale = FormatHelpers.calculatePriceWithSale(price, saleInPercent);
+            String productSalePrice = FormatHelpers.formatPriceAndCurrency(priceSale, "€");
+            String productPrice = FormatHelpers.formatPriceAndCurrency(price, "€");
 
-                String productSalePrice = FormatHelpers.formatPriceAndCurrency(priceSale, "€");
-                String productPrice = FormatHelpers.formatPriceAndCurrency(price, "€");
-
-                binding.tvSum.setText(productSalePrice);
-                binding.tvSumSale.setText(productPrice);
-                binding.tvSumSale.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            } else {
-                String productPrice = FormatHelpers.formatPriceAndCurrency(p.getPrice(), "€");
-                binding.tvSum.setText(productPrice);
-                binding.tvSumSale.setVisibility(View.GONE);
-            }
-
+            binding.tvSum.setText(productSalePrice);
+            binding.tvSumSale.setText(productPrice);
+            binding.tvSumSale.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         } else {
-            HardwareModel p = (HardwareModel) product.getModelData();
-            picPath = ((HardwareModel) product.getModelData()).getPicPath();
-            title = ((HardwareModel) product.getModelData()).getDesignation();
-            spec1 = p.getReleaseDate();
-            spec2 = p.getType();
-            spec3 = p.getManufacturer();
-            spec1Title = getResources().getString(R.string.publication);
+            String productPrice = FormatHelpers.formatPriceAndCurrency(product.getPrice(), "€");
+            binding.tvSum.setText(productPrice);
+            binding.tvSumSale.setVisibility(View.GONE);
+        }
+
+        if (product.getProductType() == Constants.PRODUCT_TYPE_SOFTWARE) {
+            SoftwareModel p = (SoftwareModel) product;
+
+            spec2Title = getResources().getString(R.string.genre);
+            spec2 = p.getGenre();
+            spec3Title = getResources().getString(R.string.fsk);
+            spec3 = String.valueOf(p.getFsk());
+        } else {
+            HardwareModel p = (HardwareModel) product;
+
             spec2Title = getResources().getString(R.string.type);
+            spec2 = p.getType();
             spec3Title = getResources().getString(R.string.manufacturer);
-
-            if (p.isInSale()) {
-                Double price = p.getPrice();
-                Double saleInPercent = p.getSaleInPercent();
-                Double priceSale = FormatHelpers.calculatePriceWithSale(price, saleInPercent);
-
-                String productSalePrice = FormatHelpers.formatPriceAndCurrency(priceSale, "€");
-                String productPrice = FormatHelpers.formatPriceAndCurrency(price, "€");
-
-                binding.tvSum.setText(productSalePrice);
-                binding.tvSumSale.setText(productPrice);
-                binding.tvSumSale.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            } else {
-                String productPrice = FormatHelpers.formatPriceAndCurrency(p.getPrice(), "€");
-                binding.tvSum.setText(productPrice);
-                binding.tvSumSale.setVisibility(View.GONE);
-            }
+            spec3 = p.getManufacturer();
         }
 
 

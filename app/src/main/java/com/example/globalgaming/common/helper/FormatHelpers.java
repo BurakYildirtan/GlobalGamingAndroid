@@ -37,7 +37,7 @@ public class FormatHelpers {
     public static String formatViewDateToDataDate(String viewDate) {
         try {
             SimpleDateFormat formatViewDate = new SimpleDateFormat("dd.MM.yyyy");
-            SimpleDateFormat formatDataDate = new SimpleDateFormat("MMM d, yyyy, hh:mm:ss a");
+            SimpleDateFormat formatDataDate = new SimpleDateFormat("yyyy.MM.dd");
 
             Date dataDate = formatViewDate.parse(viewDate);
             assert dataDate != null;

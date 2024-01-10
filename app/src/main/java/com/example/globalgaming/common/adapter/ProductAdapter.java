@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.globalgaming.R;
+import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.helper.FormatHelpers;
 import com.example.globalgaming.domain.model.HardwareModel;
 import com.example.globalgaming.domain.model.ProductModel;
@@ -19,7 +20,6 @@ import com.example.globalgaming.domain.model.SoftwareModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.Objects;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     private final Context context;
@@ -43,66 +43,37 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ProductModel product = productList.get(position);
-        Object modelData = product.getModelData();
-        if (modelData instanceof SoftwareModel) {
-            SoftwareModel softwareModel = (SoftwareModel) modelData;
 
-            //Title
-            String title = softwareModel.getDesignation();
-            holder.productTitle.setText(title);
-
-            //Sale
-            if (softwareModel.getSaleInPercent() != 0.0 ) {
-                Double price = softwareModel.getPrice();
-                Double saleInPercent = softwareModel.getSaleInPercent();
-                Double priceSale = FormatHelpers.calculatePriceWithSale(price, saleInPercent);
-
-                String productSalePrice = FormatHelpers.formatPriceAndCurrency(priceSale, "€");
-                String productPrice = FormatHelpers.formatPriceAndCurrency(price, "€");
-
-                holder.productPrice.setText(productSalePrice);
-                holder.productPriceSale.setText(productPrice);
-                holder.productPriceSale.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            } else  {
-                String productPrice = FormatHelpers.formatPriceAndCurrency(softwareModel.getPrice(), "€");
-                holder.productPrice.setText(productPrice);
-                holder.productPriceSale.setVisibility(View.GONE);
-            }
-
-            //Image
-            Picasso.get().load(softwareModel.getPicPath()).into(holder.productImage);
-
-        } else {
-            HardwareModel hardwareModel = (HardwareModel) modelData;
-
-            //Title
-            String title = hardwareModel.getDesignation();
-            holder.productTitle.setText(title);
-
-            //Sale
-            if (hardwareModel.getSaleInPercent() != 0.0 ) {
-                Double price = hardwareModel.getPrice();
-                Double saleInPercent = hardwareModel.getSaleInPercent();
-                Double priceSale = FormatHelpers.calculatePriceWithSale(price, saleInPercent);
-
-                String productSalePrice = FormatHelpers.formatPriceAndCurrency(priceSale, "€");
-                String productPrice = FormatHelpers.formatPriceAndCurrency(price, "€");
-
-                holder.productPrice.setText(productSalePrice);
-                holder.productPriceSale.setText(productPrice);
-                holder.productPriceSale.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            } else  {
-                String productPrice = FormatHelpers.formatPriceAndCurrency(hardwareModel.getPrice(), "€");
-                holder.productPrice.setText(productPrice);
-                holder.productPriceSale.setVisibility(View.GONE);
-            }
-
-            //Image
-            Picasso.get().load(hardwareModel.getPicPath()).into(holder.productImage);
-        }
-
-
+        setImage(holder, product.getPicPath());
+        setTitle(holder, product.getDesignation());
+        setPriceWithSale(holder, product.getSaleInPercent(), product.getPrice());
         initItemClickListener(holder, product);
+    }
+
+    private void setImage(ViewHolder holder, String picPath) {
+        Picasso.get().load(picPath).into(holder.productImage);
+    }
+
+    private void setTitle(ViewHolder holder, String designation) {
+        holder.productTitle.setText(designation);
+    }
+
+    private void setPriceWithSale(ViewHolder holder, Double saleInPercent, Double price) {
+        //Sale
+        if (saleInPercent != 0.0 ) {
+            Double priceSale = FormatHelpers.calculatePriceWithSale(price, saleInPercent);
+
+            String productSalePrice = FormatHelpers.formatPriceAndCurrency(priceSale, "€");
+            String productPrice = FormatHelpers.formatPriceAndCurrency(price, "€");
+
+            holder.productPrice.setText(productSalePrice);
+            holder.productPriceSale.setText(productPrice);
+            holder.productPriceSale.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        } else  {
+            String productPrice = FormatHelpers.formatPriceAndCurrency(price, "€");
+            holder.productPrice.setText(productPrice);
+            holder.productPriceSale.setVisibility(View.GONE);
+        }
     }
 
     private void initItemClickListener(ViewHolder holder, ProductModel product) {

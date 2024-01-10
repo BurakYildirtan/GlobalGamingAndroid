@@ -13,6 +13,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="error_wrong_user_input">Email or password is incorrect.</string>
+    <string name="something_went_wrong">Something went wrong. Try later.</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
@@ -77,4 +78,15 @@
     <string name="type">Type</string>
     <string name="manufacturer">Manufacturer</string>
     <string name="added_successfully">Added successfully</string>
+    <string name="company_name">GlobalGaming AG</string>
+    <string name="company_city">72461 Albstadt</string>
+    <string name="company_phone_number">+49 7432 1987979</string>
+    <string name="company_phone_mail">info@globalgaming.de</string>
+    <string name="imprint_company_information_body">The European Commission has established an internet platform for online dispute resolution (the "ODR platform"). The ODR platform serves as a point of entry for the out-of-court resolution of disputes regarding contractual obligations arising from online purchase contracts. You can access the ODR platform via the following link: http://ec.europa.eu/consumers/odr "Notice according to § 36 Consumer Dispute Resolution Act (VSBG)."</string>
+    <string name="imprint_company_information_title">Information on Online Dispute Resolution:</string>
+    <string name="privacy_policy_body">We are very pleased about your interest in our company. Data protection is of particular importance to the management of GlobalGaming AG. Use of the GlobalGaming AG app is generally possible without any personal data being provided. However, if an affected person wishes to use special services of our company via our website, the processing of personal data may be necessary. If the processing of personal data is necessary and there is no legal basis for such processing, we generally seek the consent of the data subject.</string>
+    <string name="terms_and_conditions_body">By using our app, you agree to our terms and conditions.</string>
+
+
+
 </resources>

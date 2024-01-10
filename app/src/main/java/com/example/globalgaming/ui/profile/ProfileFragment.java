@@ -14,12 +14,17 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.globalgaming.R;
+import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.helper.FormatHelpers;
 import com.example.globalgaming.databinding.FragmentProfileBinding;
 import com.example.globalgaming.domain.model.UserModel;
 import com.example.globalgaming.ui.login.UserViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ProfileFragment extends Fragment {
 
@@ -108,7 +113,40 @@ public class ProfileFragment extends Fragment {
         MaterialButton btnConfirm = binding.btnConfirm;
         btnConfirm.setOnClickListener( view1 -> {
             changeEditFields();
+
+            try {
+                JSONObject userData = createUserDataJson();
+                userViewModel.updateUser(userData);
+            } catch (Exception e) {
+                Toast.makeText(getContext(),  getResources().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
+            }
         });
+    }
+
+    private JSONObject createUserDataJson() throws Exception {
+        TextInputEditText etUserName = binding.etUserName;
+        TextInputEditText etEmail = binding.etEmail;
+        TextInputEditText etPassword = binding.etPassword;
+        TextInputEditText etBirthday = binding.etBirthday;
+        TextInputEditText etStreet = binding.etStreet;
+        TextInputEditText etPostalCode = binding.etPostCode;
+        TextInputEditText etCity = binding.etCity;
+
+        UserModel user = userViewModel.getUserModelResult().getValue().getValue();
+        if (user != null) {
+            JSONObject updatedUser = new JSONObject();
+            updatedUser.put(Constants.USER_MODEL_ID, user.getId());
+            updatedUser.put(Constants.USER_MODEL_USER_NAME, etUserName.getText().toString());
+            updatedUser.put(Constants.USER_MODEL_PASSWORD, etPassword.getText().toString());
+            updatedUser.put(Constants.USER_MODEL_BIRTHDAY, FormatHelpers.formatViewDateToDataDate(etBirthday.getText().toString()));
+            updatedUser.put(Constants.USER_MODEL_EMAIL, etEmail.getText().toString());
+            updatedUser.put(Constants.USER_MODEL_STREET, etStreet.getText().toString());
+            updatedUser.put(Constants.USER_MODEL_POSTAL_CODE, Integer.parseInt(etPostalCode.getText().toString()));
+            updatedUser.put(Constants.USER_MODEL_CITY, etCity.getText().toString());
+            updatedUser.put(Constants.USER_MODEL_ROLE, user.getRole());
+            return updatedUser;
+        }
+        throw new Exception();
     }
 
     private void changeEditFields() {

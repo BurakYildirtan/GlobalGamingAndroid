@@ -18,30 +18,29 @@ import org.json.JSONObject;
 public class Connection {
     //the internal ip adress and port to reach the backend
 
-//    public static void getResponse(String url, final ResponseCallback callback) {
-//        AsyncTask<Void, Void, ResponseResult> asyncTask = new AsyncTask<Void, Void, ResponseResult>() {
-//            @Override
-//            protected ResponseResult doInBackground(Void... params) {
-//                try {
-//                    String fullUrl = BASE_URL + url;
-//                    JSONArray response = performRequest(fullUrl);
-//                    return new ResponseResult(response);
-//                } catch (IOException | JSONException e) {
-//                    return new ResponseResult(e);
-//                }
-//            }
-//
-//            @Override
-//            protected void onPostExecute(ResponseResult result) {
-//                if (result.isSuccessful()) {
-//                    callback.onSuccess(result.getResponse());
-//                } else {
-//                    callback.onError(result.getException());
-//                }
-//            }
-//        };
-//        asyncTask.execute();
-//    }
+    public static void getResponse(String url, final ResponseCallback callback) {
+        AsyncTask<Void, Void, ResponseResult> asyncTask = new AsyncTask<Void, Void, ResponseResult>() {
+            @Override
+            protected ResponseResult doInBackground(Void... params) {
+                try {
+                    JSONArray response = performRequest(url);
+                    return new ResponseResult(response);
+                } catch (IOException | JSONException e) {
+                    return new ResponseResult(e);
+                }
+            }
+
+            @Override
+            protected void onPostExecute(ResponseResult result) {
+                if (result.isSuccessful()) {
+                    callback.onSuccess(result.getResponse());
+                } else {
+                    callback.onError(result.getException());
+                }
+            }
+        };
+        asyncTask.execute();
+    }
 
 
     //performs a request via OkHttpClient

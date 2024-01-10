@@ -69,4 +69,9 @@ public class UserRepositoryImplTest implements UserRepository {
     public void getUser(int id, ResultCallback<UserModel> resultCallback) {
 
     }
+
+    @Override
+    public void updateUser(JSONObject userData, ResultCallback<Boolean> resultCallback) {
+
+    }
 }

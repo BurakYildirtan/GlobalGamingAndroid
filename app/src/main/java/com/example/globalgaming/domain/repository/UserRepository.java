@@ -15,4 +15,6 @@ public interface UserRepository {
 
     void getUser(int id, ResultCallback<UserModel> resultCallback);
 
+    void updateUser(JSONObject userData, ResultCallback<Boolean> resultCallback);
+
 }

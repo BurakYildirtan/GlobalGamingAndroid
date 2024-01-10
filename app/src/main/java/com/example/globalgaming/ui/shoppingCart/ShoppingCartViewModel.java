@@ -26,30 +26,30 @@ public class ShoppingCartViewModel extends ViewModel {
 
     public Boolean  addProduct(ProductModel product) {
 
-        int count = 0;
-
-        for( ShoppingCartModel shoppingCart : shoppingCart.getValue()) {
-
-            if (shoppingCart.getModelData() instanceof SoftwareModel && product.getModelData() instanceof SoftwareModel) {
-                SoftwareModel pNew = (SoftwareModel)  product.getModelData();
-                SoftwareModel p = (SoftwareModel) shoppingCart.getModelData();
-
-                if (p.getDesignation() == pNew.getDesignation()) {
-                    count++;
-                    return true;
-                }
-
-
-            } else if (shoppingCart.getModelData() instanceof SoftwareModel && product.getModelData() instanceof SoftwareModel) {
-                HardwareModel pNew = (HardwareModel) product.getModelData();
-                HardwareModel p = (HardwareModel) shoppingCart.getModelData();
-
-                if (p.getDesignation() == pNew.getDesignation()) {
-                    count++;
-                    return true;
-                }
-            }
-        }
+//        int count = 0;
+//
+//        for( ShoppingCartModel shoppingCart : shoppingCart.getValue()) {
+//
+//            if (shoppingCart.getModelData() instanceof SoftwareModel && product.getModelData() instanceof SoftwareModel) {
+//                SoftwareModel pNew = (SoftwareModel)  product.getModelData();
+//                SoftwareModel p = (SoftwareModel) shoppingCart.getModelData();
+//
+//                if (p.getDesignation() == pNew.getDesignation()) {
+//                    count++;
+//                    return true;
+//                }
+//
+//
+//            } else if (shoppingCart.getModelData() instanceof SoftwareModel && product.getModelData() instanceof SoftwareModel) {
+//                HardwareModel pNew = (HardwareModel) product.getModelData();
+//                HardwareModel p = (HardwareModel) shoppingCart.getModelData();
+//
+//                if (p.getDesignation() == pNew.getDesignation()) {
+//                    count++;
+//                    return true;
+//                }
+//            }
+//        }
         return false;
     }
 }

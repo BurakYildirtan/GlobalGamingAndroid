@@ -2,6 +2,7 @@ package com.example.globalgaming.common.helper;
 
 import android.annotation.SuppressLint;
 
+import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.domain.model.HardwareModel;
 import com.example.globalgaming.domain.model.ProductModel;
 import com.example.globalgaming.domain.model.SoftwareModel;
@@ -23,24 +24,34 @@ public class ModelHelpers {
         return data.has("genre");
     }
 
-    public static Boolean isHardware(JSONObject data) {
-        return data.has("manufacturer");
-    }
-
     public static List<ProductModel> createProductList(JSONArray result) throws JSONException {
         ArrayList<ProductModel> resultList = new ArrayList<>();
 
         for(int i = 0; i < result.length(); i++) {
-            ProductModel productModel;
             JSONObject productJson = (JSONObject) result.get(i);
+
+            int productId = productJson.getInt("productId");
+            String designation = productJson.getString("designation");
+            Double price = productJson.getDouble("price");
+            Double saleInPercent = productJson.getDouble("saleInPercent");
+            Double rating = productJson.getDouble("rating");
+            String picPath = productJson.getString("picPath");
+            String releaseDate = productJson.getString("releaseDate");
+
+            int productType;
+            ProductModel product;
             if (ModelHelpers.isSoftware(productJson)) {
-                SoftwareModel softwareModel = new SoftwareModel(productJson);
-                productModel = new ProductModel(i,softwareModel);
+                productType = Constants.PRODUCT_TYPE_SOFTWARE;
+                String genre = productJson.getString("genre");
+                int fsk = productJson.getInt("fsk");
+                product = new SoftwareModel(i, productType, productId, designation, price, saleInPercent, genre, rating, picPath, releaseDate, fsk);
             } else {
-                HardwareModel hardwareModel = new HardwareModel(productJson);
-                productModel = new ProductModel(i, hardwareModel);
+                productType = Constants.PRODUCT_TYPE_HARDWARE;
+                String type = productJson.getString("type");
+                String manufacturer = productJson.getString("manufacturer");
+                product = new HardwareModel(i, productType, productId, designation, price, saleInPercent, rating, picPath, releaseDate, type, manufacturer);
             }
-            resultList.add(productModel);
+            resultList.add(product);
         }
         return resultList;
     }

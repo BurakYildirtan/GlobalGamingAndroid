@@ -37,7 +37,20 @@
         android:name="com.example.globalgaming.ui.settings.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings"
-        />
+        >
+        <action
+            android:id="@+id/action_settingsFragment_to_imprintFragment"
+            app:destination="@id/imprintFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_termsAndConditionsFragment"
+            app:destination="@id/termsAndConditionsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_privacyPolicyFragment"
+            app:destination="@id/privacyPolicyFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+    </fragment>
     <fragment
         android:id="@+id/orderTakenFragment"
         android:name="com.example.globalgaming.ui.orderTaken.OrderTakenFragment"
@@ -72,6 +85,42 @@
         <action
             android:id="@+id/action_categoryFragment_to_singleArticleFragment"
             app:destination="@id/singleArticleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/imprintFragment"
+        android:name="com.example.globalgaming.ui.settings.imprint.ImprintFragment"
+        android:label="ImprintFragment"
+        tools:layout="@layout/fragment_imprint">
+        <action
+            android:id="@+id/action_imprintFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.globalgaming.ui.settings.contact.ContactFragment"
+        android:label="ContactFragment"
+        tools:layout="@layout/fragment_contact">
+        <action
+            android:id="@+id/action_contactFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/privacyPolicyFragment"
+        android:name="com.example.globalgaming.ui.settings.privacyPolicy.PrivacyPolicyFragment"
+        android:label="PrivacyPolicyFragment"
+        tools:layout="@layout/fragment_privacy_policy">
+        <action
+            android:id="@+id/action_privacyPolicyFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termsAndConditionsFragment"
+        android:name="com.example.globalgaming.ui.settings.termsAndConditions.TermsAndConditionsFragment"
+        android:label="TermsAndConditionsFragment"
+        tools:layout="@layout/fragment_terms_and_conditions">
+        <action
+            android:id="@+id/action_termsAndConditionsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
 </navigation>

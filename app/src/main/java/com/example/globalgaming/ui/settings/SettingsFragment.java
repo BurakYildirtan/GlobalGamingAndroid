@@ -11,21 +11,22 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.globalgaming.R;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.databinding.FragmentSettingsBinding;
 import com.example.globalgaming.ui.login.LoginFragment;
 import com.example.globalgaming.ui.login.UserViewModel;
-import com.example.globalgaming.ui.main.MainFragment;
 import com.google.android.material.button.MaterialButton;
-
-import java.util.Objects;
 
 public class SettingsFragment extends Fragment {
 
     private FragmentSettingsBinding binding;
     private UserViewModel userViewModel;
+
+    private NavController navController;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,10 +49,61 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initLogoutListener();
+        navController = Navigation.findNavController(view);
+        setContactBtnListener();
+        setPrivacyPolicyBtnListener();
+        setTermsAndConditionsBtnListener();
+        setImprintBtnListener();
+        setLogoutListener();
+        
+
     }
 
-    private void initLogoutListener() {
+    private void setPrivacyPolicyBtnListener() {
+        MaterialButton privacyPolicyBtn = binding.btnPrivacyPolicy;
+        privacyPolicyBtn.setOnClickListener( view -> {
+            goToPrivacyPolicyFragment();
+        });
+    }
+
+    private void goToPrivacyPolicyFragment() {
+        navController.navigate(R.id.action_settingsFragment_to_privacyPolicyFragment);
+    }
+
+    private void setTermsAndConditionsBtnListener() {
+        MaterialButton termsAndConditionsBtn = binding.btnTermsAndConditions;
+        termsAndConditionsBtn.setOnClickListener( view -> {
+            goToTermsAndConditionsFragment();
+        });
+    }
+
+    private void goToTermsAndConditionsFragment() {
+        navController.navigate(R.id.action_settingsFragment_to_termsAndConditionsFragment);
+    }
+
+    private void setContactBtnListener() {
+        MaterialButton contactBtn = binding.btnContact;
+        contactBtn.setOnClickListener( view -> {
+            goToContactFragment();
+        });
+    }
+    
+    private void goToContactFragment() {
+        navController.navigate(R.id.action_settingsFragment_to_contactFragment);
+    }
+
+    private void setImprintBtnListener() {
+        MaterialButton imprintBtn = binding.btnImprint;
+        imprintBtn.setOnClickListener( view -> {
+            goToImprintFragment();
+        });
+    }
+
+    private void goToImprintFragment() {
+        navController.navigate(R.id.action_settingsFragment_to_imprintFragment);
+    }
+
+    private void setLogoutListener() {
         MaterialButton btnLogout = binding.btnLogout;
         btnLogout.setOnClickListener( view -> {
             goToLoginFragment();

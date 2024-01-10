@@ -26,76 +26,37 @@ import okhttp3.Response;
 
 public class UserRepositoryImpl implements UserRepository {
 
-
-
-
     @Override
-    public void loginUser(JSONObject typedUserData, ResultCallback<UserModel> resultCallback) {
-        OkHttpClient client = Connection.getOkHttpClient();
-        String url = Constants.BASE_URL + Constants.USER_ALL;
-
-        Request request = new Request.Builder().url(url).build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                resultCallback.onError(Result.error(e));
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                try {
-                    String responseBody = response.body().string();
-                    JSONArray result = new JSONArray(responseBody);
-                    //TODO Test
-                    JSONObject user1 = (JSONObject) result.get(1);
-                    UserModel userModel = new UserModel(user1);
-
-
-                    if (userModel.getEmail().equals(typedUserData.getString(Constants.USER_MODEL_EMAIL)) && userModel.getPassword().equals(typedUserData.getString(Constants.USER_MODEL_PASSWORD))) {
-                        resultCallback.onSuccess(Result.success(userModel));
-                    }
-                    else {
-                        resultCallback.onError(Result.error(new Exception()));
-                    }
-                    //TODO test ende
-                    Log.d("usersAll", "Success " + response);
-
-                } catch (JSONException e) {
-//                    throw new RuntimeException(e);
-                }
-            }
-        });
-    }
-
-    public void loginUserNew(JSONObject typedUserData, ResultCallback<UserModel> responseCallback) {
+    public void loginUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback) {
         String url = Constants.BASE_URL + Constants.USER_LOGIN;
 
+        try {
+            String email = typedUserData.getString(Constants.USER_MODEL_EMAIL);
+            String password = typedUserData.getString(Constants.USER_MODEL_PASSWORD);
 
+            Connection.performPostRequest(url, new Connection.ResponseCallback() {
+                @Override
+                public void onSuccess(JSONArray response) {
+                    try {
+                        if (response.length() > 0) {
+                            UserModel userModel = new UserModel( (JSONObject) response.get(0));
+                            responseCallback.onSuccess(Result.success(userModel));
+                        } else {
+                            responseCallback.onError(Result.error(new Exception()));
+                        }
+                    } catch (JSONException e) {
+                        responseCallback.onError(Result.error(new Exception()));
+                    }
+                }
 
-        OkHttpClient client = Connection.getOkHttpClient();
-        Request request = new Request.Builder().url(url).build();
-
-//        client.newCall(request).enqueue(new Callback() {
-
-//        Connection.ResponseCallback rCB = new Connection.ResponseCallback() {
-//            @Override
-//            public void onSuccess(JSONArray response) {
-////                try {
-////                    String responseBody = response.body().string();
-////                    JSONArray result = new JSONArray(responseBody);
-////                } catch (JSONException e) {
-//                //                    throw new RuntimeException(e);
-//                }
-//            }
-//
-//            @Override
-//            public void onError(Exception e) {
-//                Log.d("Succ", "Hat geklappt" + e.toString());
-//            }
-//        };
-
-//        Connection.performPostRequest("http://141.87.68.204:4567/userLogin", rCB, "email", "rovcanar@hs-albsig.", "password", "Test1234");
+                @Override
+                public void onError(Exception e) {
+                    responseCallback.onError(Result.error(new Exception()));
+                }
+            }, "email", email, "password", password);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -107,25 +68,84 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void getUser(int id, ResultCallback<UserModel> resultCallback) {
+        String url = Constants.BASE_URL + Constants.USER_GET + "/" + id;
+
+        Connection.getResponse(url, new Connection.ResponseCallback() {
+            @Override
+            public void onSuccess(JSONArray response) {
+                if (response.length() > 0) {
+                    try {
+                        UserModel userModel = new UserModel((JSONObject) response.get(0));
+                        resultCallback.onSuccess(Result.success(userModel));
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    resultCallback.onError(Result.error(new Exception()));
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+                resultCallback.onError(Result.error(e));
+            }
+        });
+
+
 
     }
+
+    @Override
+    public void updateUser(JSONObject userData, ResultCallback<Boolean> resultCallback) {
+        String url = Constants.BASE_URL + Constants.USER_UPDATE;
+
+        try {
+            int uId = userData.getInt(Constants.USER_MODEL_ID);
+            String userName = userData.getString(Constants.USER_MODEL_USER_NAME);
+            String bDay = userData.getString(Constants.USER_MODEL_BIRTHDAY);
+            String email = userData.getString(Constants.USER_MODEL_EMAIL);
+            String street = userData.getString(Constants.USER_MODEL_STREET);
+            int postalCode = userData.getInt(Constants.USER_MODEL_POSTAL_CODE);
+            String city = userData.getString(Constants.USER_MODEL_CITY);
+            String password = userData.getString(Constants.USER_MODEL_PASSWORD);
+            String role = userData.getString(Constants.USER_MODEL_ROLE);
+
+            Connection.performPostRequest(url, new Connection.ResponseCallback() {
+                @Override
+                public void onSuccess(JSONArray response) {
+                    if (response.length() > 0) {
+                        resultCallback.onSuccess(Result.success(true));
+                    } else {
+                        resultCallback.onError(Result.error(new Exception()));
+                    }
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    resultCallback.onError(Result.error(new Exception()));
+                }
+            }, Constants.USER_MODEL_EMAIL,
+                    email,
+                    Constants.USER_MODEL_PASSWORD,
+                    password,
+                    Constants.USER_MODEL_USER_NAME,
+                    userName,
+                    Constants.USER_MODEL_BIRTHDAY,
+                    bDay,
+                    Constants.USER_MODEL_ID,
+                    String.valueOf(uId),
+                    Constants.USER_MODEL_STREET,
+                    street,
+                    Constants.USER_MODEL_POSTAL_CODE,
+                    String.valueOf(postalCode),
+                    Constants.USER_MODEL_CITY,
+                    city,
+                    Constants.USER_MODEL_ROLE,
+                    role
+                    );
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
-
-
-
-//        try {
-//        JSONArray response = Connection.performRequestBaseUrl(Constants.USER_LOGIN);
-//
-//        //TODO Test
-//        JSONObject user1 = (JSONObject) response.get(0);
-//        UserModel userModel = new UserModel(user1);
-//        //TODO test ende
-//
-//        Result<UserModel> userResult = Result.success(userModel);
-//        Log.d("usersAll", "Success "+ response);
-//        responseCallback.onSuccess(userResult);
-//    } catch(Exception e) {
-//        Result<UserModel> errorResult = Result.error(e);
-//        Log.d("usersAll", "Error "+ e);
-//        responseCallback.onError(errorResult);
-//    }

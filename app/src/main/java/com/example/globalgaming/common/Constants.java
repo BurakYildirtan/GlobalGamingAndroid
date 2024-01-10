@@ -3,12 +3,15 @@ package com.example.globalgaming.common;
 public class Constants {
 
     //connection
-    public static final String BASE_URL = "http://141.87.68.153:4567/";
+    public static final String BASE_URL = "http://141.87.68.136:4567/";
 
     //userRepo
     public static final String USER_ALL = "usersAll";
 
     public static final String USER_LOGIN = "userLogin";
+    public static final String USER_UPDATE = "updateUser";
+
+    public static final String USER_GET = "userById";
 
 
     //productRepo
@@ -41,8 +44,9 @@ public class Constants {
     public static final String USER_MODEL_CITY = "city";
     public static final String USER_MODEL_USER_NAME = "userName";
 
-    //ProductModel
-
+    //ProductType
+    public static final int PRODUCT_TYPE_SOFTWARE = 1;
+    public static final int PRODUCT_TYPE_HARDWARE = 2;
 
 
 
