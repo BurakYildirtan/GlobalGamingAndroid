@@ -138,9 +138,6 @@ public class UserRepositoryImpl implements UserRepository {
                 resultCallback.onError(Result.error(e));
             }
         });
-
-
-
     }
 
     @Override

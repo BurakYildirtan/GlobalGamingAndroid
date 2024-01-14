@@ -26,6 +26,9 @@ public class Constants {
     //hardwareRepo
     public static final String HARDWARE_ALL = "hardwareAll";
 
+    public static final String HARDWARE_MIN_REQUIREMENTS = "min";
+
+    public static final String HARDWARE_REC_REQUIREMENTS = "rec";
 
     //softwareRepo
     public static final String SOFTWARE_ALL = "softwareAll";

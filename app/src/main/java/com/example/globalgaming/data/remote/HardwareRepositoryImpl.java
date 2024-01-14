@@ -8,11 +8,13 @@ import com.example.globalgaming.common.callbacks.ResultCallback;
 import com.example.globalgaming.common.helper.ModelHelpers;
 import com.example.globalgaming.common.mapper.Result;
 import com.example.globalgaming.domain.model.ProductModel;
+import com.example.globalgaming.domain.model.UserModel;
 import com.example.globalgaming.domain.repository.HardwareRepository;
 import com.example.globalgaming.domain.repository.SaleRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -51,6 +53,58 @@ public class HardwareRepositoryImpl implements HardwareRepository {
                 } catch (JSONException e) {
                     resultCallback.onError(Result.error(e));
                 }
+            }
+        });
+    }
+
+    @Override
+    public void getMinimumRequirements(String rating, ResultCallback<List<ProductModel>> resultCallback) {
+        String url = Constants.BASE_URL + Constants.HARDWARE_MIN_REQUIREMENTS + "/" + rating;
+
+        Connection.getResponse(url, new Connection.ResponseCallback() {
+            @Override
+            public void onSuccess(JSONArray response) {
+                if (response.length() > 0) {
+                    try {
+                        List<ProductModel> resultList = ModelHelpers.createProductList(response);
+                        resultCallback.onSuccess(Result.success(resultList));
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    resultCallback.onError(Result.error(new Exception()));
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+                resultCallback.onError(Result.error(e));
+            }
+        });
+    }
+
+    @Override
+    public void getRecommendedRequirements(String rating, ResultCallback<List<ProductModel>> resultCallback) {
+        String url = Constants.BASE_URL + Constants.HARDWARE_REC_REQUIREMENTS + "/" + rating;
+
+        Connection.getResponse(url, new Connection.ResponseCallback() {
+            @Override
+            public void onSuccess(JSONArray response) {
+                if (response.length() > 0) {
+                    try {
+                        List<ProductModel> resultList = ModelHelpers.createProductList(response);
+                        resultCallback.onSuccess(Result.success(resultList));
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    resultCallback.onError(Result.error(new Exception()));
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+                resultCallback.onError(Result.error(e));
             }
         });
     }

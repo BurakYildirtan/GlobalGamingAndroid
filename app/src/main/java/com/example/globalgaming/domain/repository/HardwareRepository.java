@@ -11,4 +11,8 @@ import java.util.List;
 public interface HardwareRepository {
 
     void getHardwareAll(ResultCallback<List<ProductModel>> resultCallback);
+
+    void getRecommendedRequirements(String rating, ResultCallback<List<ProductModel>> resultCallback);
+
+    void getMinimumRequirements(String rating, ResultCallback<List<ProductModel>> resultCallback);
 }

@@ -85,7 +85,7 @@ public class AdminEditProductSingleArticleFragment extends Fragment {
             binding.tilSpec2.setHint(getResources().getString(R.string.fsk));
             SoftwareModel softwareModel = (SoftwareModel) productModel;
             binding.etSpec1.setText(softwareModel.getGenre());
-            binding.etSpec2.setText(softwareModel.getFsk());
+            binding.etSpec2.setText(String.valueOf(softwareModel.getFsk()));
         } else {
             binding.tilSpec1.setHint(getResources().getString(R.string.manufacturer));
             binding.tilSpec2.setHint(getResources().getString(R.string.type));
