@@ -15,4 +15,6 @@ public interface ProductRepository {
     void addProduct(JSONObject typedUserData, ResultCallback<ProductModel> resultCallback);
 
     void updateProduct(JSONObject productData, ResultCallback<ProductModel> resultCallback);
+
+    void deleteProduct(JSONObject productData, ResultCallback<String> resultCallback);
 }

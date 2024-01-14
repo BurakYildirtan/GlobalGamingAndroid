@@ -92,6 +92,7 @@
     <string name="safety_info">Are you sure, that you want to remove this product from our database ?</string>
     <string name="registration_successful">Registration successful !</string>
     <string name="update_successful">Update successful !</string>
+    <string name="removed_successful">Removed successful</string>
 
 
 </resources>

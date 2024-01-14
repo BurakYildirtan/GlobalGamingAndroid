@@ -12,6 +12,8 @@ import com.example.globalgaming.domain.repository.ProductRepository;
 import com.example.globalgaming.domain.repository.SaleRepository;
 import com.example.globalgaming.domain.repository.SoftwareRepository;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,7 +44,7 @@ public class AdminEditProductViewModel extends ViewModel {
         getAllProducts();
     }
 
-    private void getAllProducts() {
+    public void getAllProducts() {
         productRepository.getProductAll(getResultCallback());
     }
 
@@ -60,5 +62,19 @@ public class AdminEditProductViewModel extends ViewModel {
             }
         }
         return new ArrayList<>();
+    }
+
+    public void deleteProduct(JSONObject productData, ResultCallback<String> resultCallback) {
+        productRepository.deleteProduct(productData, new ResultCallback<String>() {
+            @Override
+            public void onSuccess(Result<String> response) {
+                resultCallback.onSuccess(response);
+            }
+
+            @Override
+            public void onError(Result<String> error) {
+                resultCallback.onError(error);
+            }
+        });
     }
 }

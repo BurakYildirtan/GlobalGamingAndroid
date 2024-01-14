@@ -17,12 +17,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.globalgaming.R;
 import com.example.globalgaming.TheApp;
+import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.adapter.ProductAdapter;
+import com.example.globalgaming.common.callbacks.ResultCallback;
+import com.example.globalgaming.common.dialog.OnButtonClickListener;
 import com.example.globalgaming.common.dialog.SimpleBottomSheetDialog;
+import com.example.globalgaming.common.helper.FormatHelpers;
+import com.example.globalgaming.common.mapper.Result;
 import com.example.globalgaming.databinding.FragmentAdminEditProductBinding;
+import com.example.globalgaming.domain.model.HardwareModel;
 import com.example.globalgaming.domain.model.ProductModel;
+import com.example.globalgaming.domain.model.SoftwareModel;
 import com.example.globalgaming.domain.repository.ProductRepository;
 import com.google.android.material.button.MaterialButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class AdminEditProductFragment extends Fragment {
 
@@ -103,7 +113,7 @@ public class AdminEditProductFragment extends Fragment {
             if (title.equals(getResources().getString(R.string.edit_product))) {
                 goToEditProductFragment(product);
             } else {
-                removeProductProcess();
+                removeProductProcess(product);
             }
         });
         rvProduct.setAdapter(productAdapter);
@@ -118,9 +128,64 @@ public class AdminEditProductFragment extends Fragment {
 
 
 
-    private void removeProductProcess() {
-        SimpleBottomSheetDialog simpleBottomSheetDialog = new SimpleBottomSheetDialog();
+    private void removeProductProcess(ProductModel product) {
+        SimpleBottomSheetDialog simpleBottomSheetDialog = new SimpleBottomSheetDialog( isConfirmed -> {
+            if (isConfirmed) {
+                JSONObject productData = createJsonData(product);
+                adminEditProductViewModel.deleteProduct(productData, new ResultCallback<String>() {
+                    @Override
+                    public void onSuccess(Result<String> response) {
+                        Toast.makeText(getContext(), getResources().getString(R.string.removed_successful), Toast.LENGTH_SHORT).show();
+                        adminEditProductViewModel.getAllProducts();
+                    }
+
+                    @Override
+                    public void onError(Result<String> error) {
+                        Toast.makeText(getContext(), getResources().getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
         simpleBottomSheetDialog.show(getParentFragmentManager(), SimpleBottomSheetDialog.TAG);
+    }
+
+    private JSONObject createJsonData(ProductModel productModel) {
+        JSONObject resultData = new JSONObject();
+        int productType = productModel.getProductType();
+
+        String productId;
+        if (productType == Constants.PRODUCT_TYPE_SOFTWARE) {
+            SoftwareModel softwareModel = (SoftwareModel) productModel;
+            productId = String.valueOf(softwareModel.getProductId());
+        } else {
+            HardwareModel hardwareModel = (HardwareModel) productModel;
+            productId = String.valueOf(hardwareModel.getProductId());
+        }
+
+        try {
+            String viewFormattedReleaseDate = FormatHelpers.formatDataDateToViewDate(productModel.getReleaseDate());
+            String putFormat = FormatHelpers.formatViewDateToDataDate(viewFormattedReleaseDate);
+            resultData.put(Constants.PRODUCT_MODEL_PRODUCT_ID, productId);
+            resultData.put(Constants.PRODUCT_MODEL_PRODUCT_TYPE, productModel.getProductType());
+            resultData.put(Constants.PRODUCT_MODEL_PIC_PATH, productModel.getPicPath());
+            resultData.put(Constants.PRODUCT_MODEL_DESIGNATION, productModel.getDesignation());
+            resultData.put(Constants.PRODUCT_MODEL_PRICE, String.valueOf(productModel.getPrice()));
+            resultData.put(Constants.PRODUCT_MODEL_SALE_IN_PERCENT, String.valueOf(productModel.getSaleInPercent()));
+            resultData.put(Constants.PRODUCT_MODEL_RELEASE_DATE, putFormat);
+            resultData.put(Constants.PRODUCT_MODEL_RATING, String.valueOf(productModel.getRating()));
+            if (productType == Constants.PRODUCT_TYPE_SOFTWARE) {
+                SoftwareModel softwareModel = (SoftwareModel) productModel;
+                resultData.put(Constants.SOFTWARE_MODEL_GENRE, softwareModel.getGenre() );
+                resultData.put(Constants.SOFTWARE_MODEL_FSK, String.valueOf(softwareModel.getFsk()));
+            } else {
+                HardwareModel hardwareModel = (HardwareModel) productModel;
+                resultData.put(Constants.HARDWARE_MODEL_MANUFACTURER, hardwareModel.getManufacturer());
+                resultData.put(Constants.HARDWARE_MODEL_TYPE, hardwareModel.getType());
+            }
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        return resultData;
     }
 
     private void setSearchView() {
