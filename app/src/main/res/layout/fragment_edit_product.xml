@@ -128,22 +128,12 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_birthday"
+                android:id="@+id/et_product_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <CheckBox
-            android:id="@+id/cb_in_sale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/checkbox_sale_title"
-            app:layout_constraintTop_toBottomOf="@id/til_product_price"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -153,8 +143,9 @@
             android:hint="@string/percent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
-            app:layout_constraintTop_toBottomOf="@id/cb_in_sale"
+            app:layout_constraintTop_toBottomOf="@id/til_product_price"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -250,7 +241,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_continue_shopping"
+            android:id="@+id/btn_confirm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

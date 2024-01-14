@@ -1,6 +1,8 @@
 package com.example.globalgaming.domain.model;
 
 
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 public class ProductModel implements Serializable {
@@ -66,4 +68,5 @@ public class ProductModel implements Serializable {
     public boolean isInSale() {
         return saleInPercent != 0.0;
     }
+
 }

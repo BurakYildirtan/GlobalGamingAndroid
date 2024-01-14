@@ -20,6 +20,7 @@ import com.example.globalgaming.R;
 import com.example.globalgaming.TheApp;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.callbacks.ResultCallback;
+import com.example.globalgaming.common.helper.FormatHelpers;
 import com.example.globalgaming.common.mapper.Result;
 import com.example.globalgaming.databinding.FragmentAddProductBinding;
 import com.example.globalgaming.domain.model.ProductModel;
@@ -40,12 +41,12 @@ public class AdminAddProductFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initViewModel();
     }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentAddProductBinding.inflate(inflater, container, false);
-        initViewModel();
         return binding.getRoot();
     }
 
@@ -145,7 +146,7 @@ public class AdminAddProductFragment extends Fragment {
         } else {
             saleInPercent = "0.0";
         }
-        String publication = binding.etReleaseDate.getText().toString();
+        String publication = FormatHelpers.formatViewDateToDataDate(binding.etReleaseDate.getText().toString());
         String rating = binding.etRating.getText().toString();
         String spec1 = binding.etSpec1.getText().toString();
         String spec2 = binding.etSpec2.getText().toString();

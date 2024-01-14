@@ -13,4 +13,6 @@ public interface ProductRepository {
     void getProductAll(ResultCallback<List<ProductModel>> resultCallback);
 
     void addProduct(JSONObject typedUserData, ResultCallback<ProductModel> resultCallback);
+
+    void updateProduct(JSONObject productData, ResultCallback<ProductModel> resultCallback);
 }

@@ -36,4 +36,20 @@ public class AdminViewModel extends ViewModel {
             }
         });
     }
+
+    public void updateProduct(JSONObject productData, ResultCallback<ProductModel> resultCallback) {
+        productRepository.updateProduct(productData, new ResultCallback<ProductModel>() {
+            @Override
+            public void onSuccess(Result<ProductModel> response) {
+                if (response.isSuccess()) {
+                    resultCallback.onSuccess(response);
+                }
+            }
+
+            @Override
+            public void onError(Result<ProductModel> error) {
+                resultCallback.onError(Result.error(new Exception()));
+            }
+        });
+    }
 }

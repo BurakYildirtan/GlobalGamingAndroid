@@ -1,7 +1,6 @@
 package com.example.globalgaming.ui.adminPanel.editProduct;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +23,6 @@ import com.example.globalgaming.databinding.FragmentAdminEditProductBinding;
 import com.example.globalgaming.domain.model.ProductModel;
 import com.example.globalgaming.domain.repository.ProductRepository;
 import com.google.android.material.button.MaterialButton;
-
-import java.util.Objects;
 
 public class AdminEditProductFragment extends Fragment {
 
@@ -104,7 +101,7 @@ public class AdminEditProductFragment extends Fragment {
         RecyclerView rvProduct = binding.rvProduct;
         productAdapter = new ProductAdapter(this.getContext(), product -> {
             if (title.equals(getResources().getString(R.string.edit_product))) {
-                goToEditProductFragment();
+                goToEditProductFragment(product);
             } else {
                 removeProductProcess();
             }
@@ -112,11 +109,14 @@ public class AdminEditProductFragment extends Fragment {
         rvProduct.setAdapter(productAdapter);
     }
 
-    private void goToEditProductFragment() {
+    private void goToEditProductFragment(ProductModel product) {
         Bundle bundle = new Bundle();
         bundle.putString("title", title);
+        bundle.putSerializable("productModel", product);
         navController.navigate(R.id.action_adminEditProductFragment_to_adminEditProductSingleArticleFragment, bundle);
     }
+
+
 
     private void removeProductProcess() {
         SimpleBottomSheetDialog simpleBottomSheetDialog = new SimpleBottomSheetDialog();

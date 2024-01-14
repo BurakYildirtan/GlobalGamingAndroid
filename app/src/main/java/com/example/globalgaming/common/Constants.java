@@ -56,7 +56,7 @@ public class Constants {
     //Product-Model
     public static final String PRODUCT_MODEL_PRODUCT_ID = "productId";
 
-    public static final String PRODUCT_MODEL_PRODUCT_TYPE = "type";
+    public static final String PRODUCT_MODEL_PRODUCT_TYPE = "product_type";
     public static final String PRODUCT_MODEL_DESIGNATION = "designation";
     public static final String PRODUCT_MODEL_PRICE = "price";
     public static final String PRODUCT_MODEL_SALE_IN_PERCENT = "saleInPercent";
