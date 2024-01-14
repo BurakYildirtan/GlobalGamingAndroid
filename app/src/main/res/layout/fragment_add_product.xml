@@ -57,6 +57,8 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             android:weightSum="2"
             android:layout_marginHorizontal="16dp"
+            app:singleSelection="true"
+            app:checkedButton="@id/btn_category_game"
             >
             <Button
                 style="?attr/materialButtonOutlinedStyle"
@@ -111,7 +113,6 @@
             android:layout_marginTop="24dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/image_path"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -133,7 +134,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/name"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -155,11 +155,10 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/price"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_birthday"
+                android:id="@+id/et_product_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -174,7 +173,6 @@
             app:layout_constraintTop_toBottomOf="@id/til_product_price"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:enabled="false"
             />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -187,7 +185,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/cb_in_sale"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -209,7 +206,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/til_sale_in_per_cent"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -231,7 +227,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/til_release_date"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -253,7 +248,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/til_rating"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -275,7 +269,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/til_spec_1"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -287,7 +280,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_continue_shopping"
+            android:id="@+id/btn_add_product"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -297,10 +290,7 @@
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="32dp"
             android:text="@string/add_product"
-            android:enabled="false"
             />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

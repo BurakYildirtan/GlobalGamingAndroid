@@ -70,9 +70,15 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setFastLogin();
         initBtnLogin();
         initBtnGoToRegistration();
         initLiveDataObserver();
+    }
+
+    private void setFastLogin() {
+        binding.etEmail.setText("buraki@hs-albsig.de");
+        binding.etPassword.setText("Test123");
     }
 
     private void initBtnLogin() {
@@ -81,6 +87,7 @@ public class LoginFragment extends Fragment {
         btnLogin.setOnClickListener( view -> {
             String typedUserNameRes = binding.etEmail.getText().toString();
             String typedPasswordRes = binding.etPassword.getText().toString();
+
 
             JSONObject userData = new JSONObject();
             try {

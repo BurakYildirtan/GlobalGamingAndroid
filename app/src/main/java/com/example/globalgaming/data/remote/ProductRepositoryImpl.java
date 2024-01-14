@@ -1,5 +1,7 @@
 package com.example.globalgaming.data.remote;
 
+import android.view.Display;
+
 import androidx.annotation.NonNull;
 
 import com.example.globalgaming.common.Connection;
@@ -12,6 +14,7 @@ import com.example.globalgaming.domain.repository.ProductRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -52,5 +55,69 @@ public class ProductRepositoryImpl implements ProductRepository {
                 }
             }
         });
+    }
+
+    @Override
+    public void addProduct(JSONObject typedUserData, ResultCallback<ProductModel> resultCallback) {
+        String url = Constants.BASE_URL + Constants.PRODUCT_ADD;
+            try {
+                int productType = typedUserData.getInt(Constants.PRODUCT_MODEL_PRODUCT_TYPE);
+                String imgPath = typedUserData.getString(Constants.PRODUCT_MODEL_PIC_PATH);
+                String designation =  typedUserData.getString(Constants.PRODUCT_MODEL_DESIGNATION);
+                String price =  typedUserData.getString(Constants.PRODUCT_MODEL_PRICE);
+                String saleInPercent = typedUserData.getString(Constants.PRODUCT_MODEL_SALE_IN_PERCENT);
+                String releaseDate =  typedUserData.getString(Constants.PRODUCT_MODEL_RELEASE_DATE);
+                String rating =  typedUserData.getString(Constants.PRODUCT_MODEL_RATING);
+                String spec1Key;
+                String spec2Key;
+                if (productType == Constants.PRODUCT_TYPE_SOFTWARE) {
+                    spec1Key = Constants.SOFTWARE_MODEL_GENRE;
+                    spec2Key = Constants.SOFTWARE_MODEL_FSK;
+                } else {
+                    spec1Key = Constants.HARDWARE_MODEL_MANUFACTURER;
+                    spec2Key = Constants.HARDWARE_MODEL_TYPE;
+                }
+                String spec1 = typedUserData.getString(spec1Key);
+                String spec2 = typedUserData.getString(spec2Key);
+
+            Connection.performPostRequest(url, new Connection.ResponseCallback() {
+                        @Override
+                        public void onSuccess(JSONArray response) {
+                            try {
+                                if (response.length() > 0) {
+                                    resultCallback.onSuccess(Result.success(ModelHelpers.createProductList(response).get(0)));
+                                } else {
+                                    resultCallback.onError(Result.error(new Exception()));
+                                }
+                            } catch (JSONException e) {
+                                resultCallback.onError(Result.error(new Exception()));
+                            }
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+                            resultCallback.onError(Result.error(new Exception()));
+                        }
+                    }, Constants.PRODUCT_MODEL_PIC_PATH,
+                    imgPath,
+                    Constants.PRODUCT_MODEL_DESIGNATION,
+                    designation,
+                    Constants.PRODUCT_MODEL_PRICE,
+                    price,
+                    Constants.PRODUCT_MODEL_SALE_IN_PERCENT,
+                    saleInPercent,
+                    Constants.PRODUCT_MODEL_RELEASE_DATE,
+                    releaseDate,
+                    Constants.PRODUCT_MODEL_RATING,
+                    rating,
+                    spec1Key,
+                    spec1,
+                    spec2Key,
+                    spec2
+            );
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -16,6 +16,11 @@ public class Constants {
 
     //productRepo
     public static final String PRODUCT_ALL = "productsAll";
+    public static final String PRODUCT_ADD = "addProduct";
+
+    public static final String PRODUCT_UPDATE = "updateProduct";
+
+    public static final String DELETE_PRODUCT = "deleteProduct";
 
 
     //hardwareRepo
@@ -48,7 +53,24 @@ public class Constants {
     public static final int PRODUCT_TYPE_SOFTWARE = 1;
     public static final int PRODUCT_TYPE_HARDWARE = 2;
 
+    //Product-Model
+    public static final String PRODUCT_MODEL_PRODUCT_ID = "productId";
 
+    public static final String PRODUCT_MODEL_PRODUCT_TYPE = "type";
+    public static final String PRODUCT_MODEL_DESIGNATION = "designation";
+    public static final String PRODUCT_MODEL_PRICE = "price";
+    public static final String PRODUCT_MODEL_SALE_IN_PERCENT = "saleInPercent";
+    public static final String PRODUCT_MODEL_RATING = "rating";
+    public static final String PRODUCT_MODEL_PIC_PATH = "picPath";
+    public static final String PRODUCT_MODEL_RELEASE_DATE = "releaseDate";
+
+    //Software-Model
+    public static  final String SOFTWARE_MODEL_FSK = "fsk";
+    public static  final String SOFTWARE_MODEL_GENRE = "genre";
+
+    //Hardware-Model
+    public static  final String HARDWARE_MODEL_TYPE = "type";
+    public static  final String HARDWARE_MODEL_MANUFACTURER = "manufacturer";
 
 
     //other
