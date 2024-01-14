@@ -41,40 +41,12 @@
                 style="@style/TextAppearance.Material3.ActionBar.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/add_product"
+                android:text="@string/edit_product"
                 android:textColor="?attr/colorOnSurface"
                 />
 
 
         </com.google.android.material.appbar.MaterialToolbar>
-
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/toggle_btn_category"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            android:weightSum="2"
-            android:layout_marginHorizontal="16dp"
-            >
-            <Button
-                style="?attr/materialButtonOutlinedStyle"
-                android:id="@+id/btn_category_game"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/game"
-                android:layout_weight="1"
-                />
-            <Button
-                style="?attr/materialButtonOutlinedStyle"
-                android:id="@+id/btn_category_hardware"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hardware"
-                android:layout_weight="1"
-                />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_product_image"
@@ -83,7 +55,7 @@
             android:src="@drawable/ic_default_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toggle_btn_category"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
             android:layout_marginTop="24dp"
             android:background="?attr/colorPrimaryContainer"
             />
@@ -111,7 +83,6 @@
             android:layout_marginTop="24dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/image_path"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -133,7 +104,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/name"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -155,7 +125,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/price"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -174,7 +143,6 @@
             app:layout_constraintTop_toBottomOf="@id/til_product_price"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:enabled="false"
             />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -187,7 +155,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/cb_in_sale"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -209,7 +176,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/til_sale_in_per_cent"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -231,7 +197,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/til_release_date"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -253,7 +218,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/til_rating"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -275,7 +239,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             app:layout_constraintTop_toBottomOf="@id/til_spec_1"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -296,8 +259,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="32dp"
-            android:text="@string/add_product"
-            android:enabled="false"
+            android:text="@string/confirm"
             />
 
 

@@ -87,7 +87,9 @@
     <string name="imprint_company_information_title">Information on Online Dispute Resolution:</string>
     <string name="privacy_policy_body">We are very pleased about your interest in our company. Data protection is of particular importance to the management of GlobalGaming AG. Use of the GlobalGaming AG app is generally possible without any personal data being provided. However, if an affected person wishes to use special services of our company via our website, the processing of personal data may be necessary. If the processing of personal data is necessary and there is no legal basis for such processing, we generally seek the consent of the data subject.</string>
     <string name="terms_and_conditions_body">By using our app, you agree to our terms and conditions.</string>
-
+    <string name="image_path">Image path</string>
+    <string name="rating">Rating</string>
+    <string name="safety_info">Are you sure, that you want to remove this product from our database ?</string>
 
 
 </resources>

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.Group;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -20,6 +21,8 @@ import com.example.globalgaming.databinding.FragmentSettingsBinding;
 import com.example.globalgaming.ui.login.LoginFragment;
 import com.example.globalgaming.ui.login.UserViewModel;
 import com.google.android.material.button.MaterialButton;
+
+import java.util.Objects;
 
 public class SettingsFragment extends Fragment {
 
@@ -55,8 +58,32 @@ public class SettingsFragment extends Fragment {
         setTermsAndConditionsBtnListener();
         setImprintBtnListener();
         setLogoutListener();
-        
+        setSharedObserver();
+        setAddProductListener();
+        setEditProductListener();
+        setRemoveProductListener();
+    }
 
+
+    private void setSharedObserver() {
+        userViewModel.getUserModelResult().observe(getViewLifecycleOwner(), userModelResult -> {
+            if(userModelResult.isSuccess()) {
+                String role = userModelResult.getValue().getRole();
+                if (role.equals(Constants.ROLE_ADMIN)) {
+                    setAdminLayout(true);
+                } else  {
+                    setAdminLayout(false);
+                }
+            }
+        });
+    }
+
+    private void setAdminLayout(boolean isAdmin) {
+        if (isAdmin) {
+            binding.groupIsAdmin.setVisibility(View.VISIBLE);
+        } else {
+            binding.groupIsAdmin.setVisibility(View.GONE);
+        }
     }
 
     private void setPrivacyPolicyBtnListener() {
@@ -121,6 +148,40 @@ public class SettingsFragment extends Fragment {
 
         fragmentTransaction.commit();
         userViewModel.logoutUser();
+    }
+
+    private void setAddProductListener() {
+        binding.btnAddProduct.setOnClickListener(view -> {
+            goToAddProductFragment();
+        });
+    }
+
+    private void goToAddProductFragment() {
+        navController.navigate(R.id.action_settingsFragment_to_addProductFragment);
+    }
+
+    private void setEditProductListener() {
+        binding.btnEditProduct.setOnClickListener(view -> {
+            goToAdminEditProductFragment();
+        });
+    }
+
+    private void goToAdminEditProductFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("title", getResources().getString(R.string.edit_product));
+        navController.navigate(R.id.action_settingsFragment_to_adminEditProductFragment, bundle);
+    }
+
+    private void setRemoveProductListener() {
+        binding.btnRemoveProduct.setOnClickListener(view -> {
+            goToRemoveProductFragment();
+        });
+    }
+
+    private void goToRemoveProductFragment() {
+        Bundle bundle = new Bundle();
+        bundle.putString("title", getResources().getString(R.string.remove_product));
+        navController.navigate(R.id.action_settingsFragment_to_adminEditProductFragment, bundle);
     }
 
     @Override

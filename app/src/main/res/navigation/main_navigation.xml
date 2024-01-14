@@ -52,6 +52,12 @@
         <action
             android:id="@+id/action_settingsFragment_to_contactFragment"
             app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_adminEditProductFragment"
+            app:destination="@id/adminEditProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/orderTakenFragment"
@@ -126,6 +132,37 @@
         <action
             android:id="@+id/action_termsAndConditionsFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.example.globalgaming.ui.adminPanel.addProduct.AdminAddProductFragment"
+        android:label="AddProductFragment"
+        tools:layout="@layout/fragment_add_product">
+        <action
+            android:id="@+id/action_addProductFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminEditProductFragment"
+        android:name="com.example.globalgaming.ui.adminPanel.editProduct.AdminEditProductFragment"
+        android:label="AdminEditProductFragment"
+        tools:layout="@layout/fragment_admin_edit_product"
+        >
+        <action
+            android:id="@+id/action_adminEditProductFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_adminEditProductFragment_to_adminEditProductSingleArticleFragment"
+            app:destination="@id/adminEditProductSingleArticleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminEditProductSingleArticleFragment"
+        android:name="com.example.globalgaming.ui.adminPanel.editProduct.AdminEditProductSingleArticleFragment"
+        android:label="AdminEditProductSingleArticleFragment"
+        tools:layout="@layout/fragment_edit_product">
+        <action
+            android:id="@+id/action_adminEditProductSingleArticleFragment_to_adminEditProductFragment"
+            app:destination="@id/adminEditProductFragment" />
     </fragment>
 
 </navigation>

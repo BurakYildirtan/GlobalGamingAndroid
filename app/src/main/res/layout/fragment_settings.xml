@@ -172,6 +172,17 @@
             android:layout_marginHorizontal="16dp"
             />
 
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_isAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:constraint_referenced_ids="btn_add_product,
+            btn_edit_product,
+            btn_remove_product,
+            tv_title_admin_panel,
+            divider_settings_end"
+            />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
