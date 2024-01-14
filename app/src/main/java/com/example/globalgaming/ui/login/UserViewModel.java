@@ -44,6 +44,17 @@ public class UserViewModel extends ViewModel {
     }
 
     public void registerUser(JSONObject userData) {
+        userRepository.registerUser(userData, new ResultCallback<UserModel>() {
+            @Override
+            public void onSuccess(Result<UserModel> response) {
+                userModelResult.postValue(response);
+            }
+
+            @Override
+            public void onError(Result<UserModel> error) {
+                userModelResult.postValue(error);
+            }
+        });
 
     }
 

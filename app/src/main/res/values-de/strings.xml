@@ -91,5 +91,6 @@
     <string name="image_path">Bildpfad</string>
     <string name="rating">Rating</string>
     <string name="safety_info">Bist du dir sicher, dass du dieses Produkt aus der Datenbank entfernen möchtest ?</string>
+    <string name="registration_successful">Registrierung erfolgreich !</string>
 
 </resources>

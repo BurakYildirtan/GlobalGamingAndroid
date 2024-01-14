@@ -3,10 +3,10 @@ package com.example.globalgaming.common;
 public class Constants {
 
     //connection
-    public static final String BASE_URL = "http://141.87.68.136:4567/";
+    public static final String BASE_URL = "http://141.87.68.64:4567/";
 
     //userRepo
-    public static final String USER_ALL = "usersAll";
+    public static final String USER_REGISTRATION = "register";
 
     public static final String USER_LOGIN = "userLogin";
     public static final String USER_UPDATE = "updateUser";

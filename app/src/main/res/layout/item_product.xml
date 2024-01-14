@@ -22,6 +22,7 @@
             android:layout_width="80dp"
             android:layout_height="0dp"
             android:src="@drawable/happy_character"
+            android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

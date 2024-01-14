@@ -63,7 +63,55 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void registerUser(JSONObject typedUserData, ResultCallback<UserModel> responseCallback) {
+        String url = Constants.BASE_URL + Constants.USER_REGISTRATION;
 
+        try {
+            String userName = typedUserData.getString(Constants.USER_MODEL_USER_NAME);
+            String bDay = typedUserData.getString(Constants.USER_MODEL_BIRTHDAY);
+            String email = typedUserData.getString(Constants.USER_MODEL_EMAIL);
+            String street = typedUserData.getString(Constants.USER_MODEL_STREET);
+            int postalCode = typedUserData.getInt(Constants.USER_MODEL_POSTAL_CODE);
+            String city = typedUserData.getString(Constants.USER_MODEL_CITY);
+            String password = typedUserData.getString(Constants.USER_MODEL_PASSWORD);
+
+            Connection.performPostRequest(url, new Connection.ResponseCallback() {
+                        @Override
+                        public void onSuccess(JSONArray response) {
+                            try {
+                                if (response.length() > 0) {
+                                    UserModel userModel = new UserModel( (JSONObject) response.get(0));
+                                    responseCallback.onSuccess(Result.success(userModel));
+                                } else {
+                                    responseCallback.onError(Result.error(new Exception()));
+                                }
+                            } catch (JSONException e) {
+                                responseCallback.onError(Result.error(new Exception()));
+                            }
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+                            responseCallback.onError(Result.error(new Exception()));
+                        }
+                    }, Constants.USER_MODEL_EMAIL,
+                    email,
+                    Constants.USER_MODEL_PASSWORD,
+                    password,
+                    Constants.USER_MODEL_USER_NAME,
+                    userName,
+                    Constants.USER_MODEL_BIRTHDAY,
+                    bDay,
+                    Constants.USER_MODEL_STREET,
+                    street,
+                    Constants.USER_MODEL_POSTAL_CODE,
+                    String.valueOf(postalCode),
+                    Constants.USER_MODEL_CITY,
+                    city
+            );
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

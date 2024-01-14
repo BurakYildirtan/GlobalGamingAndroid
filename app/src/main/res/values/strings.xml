@@ -90,6 +90,7 @@
     <string name="image_path">Image path</string>
     <string name="rating">Rating</string>
     <string name="safety_info">Are you sure, that you want to remove this product from our database ?</string>
+    <string name="registration_successful">Registration successful !</string>
 
 
 </resources>

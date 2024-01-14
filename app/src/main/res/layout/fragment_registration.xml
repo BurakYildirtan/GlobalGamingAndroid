@@ -47,11 +47,31 @@
             android:layout_marginTop="32dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/email"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:id="@+id/til_user_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_email"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="32dp"
+            android:hint="@string/user_name"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -65,11 +85,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_email"
+            app:layout_constraintTop_toBottomOf="@id/til_user_name"
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/password"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -91,7 +110,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/birthday"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -113,7 +131,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/street"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -135,7 +152,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/postal_code"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -157,7 +173,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/city"
-            android:enabled="false"
             >
 
             <com.google.android.material.textfield.TextInputEditText
