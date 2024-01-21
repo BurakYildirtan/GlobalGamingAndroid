@@ -71,6 +71,8 @@ public class CategoryFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+        productAdapter.clearListener();
+        productAdapter = null;
     }
 
     private void setCategoryName() {
@@ -122,7 +124,7 @@ public class CategoryFragment extends Fragment {
 
     private void initProductAdapter() {
         RecyclerView rvProduct = binding.rvProduct;
-        productAdapter = new ProductAdapter(this.getContext(), product -> {
+        productAdapter = new ProductAdapter(product -> {
             navigateToSingleArticleFragment(product);
         });
         rvProduct.setAdapter(productAdapter);

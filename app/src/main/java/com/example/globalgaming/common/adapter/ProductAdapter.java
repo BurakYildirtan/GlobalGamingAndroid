@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.globalgaming.R;
@@ -18,26 +19,34 @@ import com.example.globalgaming.common.helper.FormatHelpers;
 import com.example.globalgaming.domain.model.HardwareModel;
 import com.example.globalgaming.domain.model.ProductModel;
 import com.example.globalgaming.domain.model.SoftwareModel;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
-    private final Context context;
     private List<ProductModel> productList;
     private OnProductClickListener listener;
 
+    private Context context;
 
-    public ProductAdapter(Context context, OnProductClickListener listener) {
-        this.context = context;
+
+    public ProductAdapter(OnProductClickListener listener) {
         this.productList = new ArrayList<>();
         this.listener = listener;
+    }
+
+    public void clearListener() {
+        this.listener = null;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
         return new ViewHolder(view);
     }
@@ -47,13 +56,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         ProductModel product = productList.get(position);
 
         setImage(holder, product.getPicPath());
-        setTitle(holder, product.getDesignation());
+        setTitle(holder, product.getDesignation  ());
         setPriceWithSale(holder, product.getSaleInPercent(), product.getPrice());
         initItemClickListener(holder, product);
     }
 
     private void setImage(ViewHolder holder, String picPath) {
-        Picasso.get().load(picPath).into(holder.productImage);
+        Picasso.get()
+                .load(picPath)
+                .placeholder(Objects.requireNonNull(ContextCompat.getDrawable(context, R.drawable.ic_default_image)))
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
+                .into(holder.productImage);
+
     }
 
     private void setTitle(ViewHolder holder, String designation) {

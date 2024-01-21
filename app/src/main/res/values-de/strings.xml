@@ -94,5 +94,6 @@
     <string name="registration_successful">Registrierung erfolgreich !</string>
     <string name="update_successful">Update erfolgreich !</string>
     <string name="removed_successful">Erfolgreich gelöscht !</string>
-
+    <string name="category">Kategorie</string>
+    <string name="single_article_picture">Einzelartikelbild</string>
 </resources>

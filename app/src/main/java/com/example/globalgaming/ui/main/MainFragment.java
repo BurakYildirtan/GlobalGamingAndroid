@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -25,26 +26,21 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainFragment extends Fragment {
 
     private FragmentMainBinding binding;
-    private FragmentActivity fragmentActivity;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        fragmentActivity = requireActivity();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainViewModel mainViewModel =
-                new ViewModelProvider(this).get(MainViewModel.class);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentMainBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-        return root;
+        return binding.getRoot();
     }
 
     @Override
@@ -73,7 +69,6 @@ public class MainFragment extends Fragment {
                 navController.navigate(R.id.settingsFragment);
                 return true;
             }
-
             return false;
         });
 

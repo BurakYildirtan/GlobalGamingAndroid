@@ -117,8 +117,7 @@ public class RegistrationFragment extends Fragment {
         LoginFragment newLoginFragment = new LoginFragment();
 
         fragmentTransaction = getParentFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, newLoginFragment, Constants.TAG_LOGIN)
-                .setReorderingAllowed(true);
+                .replace(R.id.fragment_container, newLoginFragment, Constants.TAG_LOGIN);
         fragmentTransaction.commit();
     }
 
@@ -136,10 +135,7 @@ public class RegistrationFragment extends Fragment {
     private void goToMainFragment() {
         MainFragment mainFragment = new MainFragment();
         fragmentTransaction = getParentFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, mainFragment, Constants.TAG_MAIN)
-                .setReorderingAllowed(true)
-                .addToBackStack(null);
-
+                .replace(R.id.fragment_container, mainFragment, Constants.TAG_MAIN);
         fragmentTransaction.commit();
     }
 }

@@ -75,6 +75,8 @@ public class AdminEditProductFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+        productAdapter.clearListener();
+        productAdapter = null;
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -109,7 +111,7 @@ public class AdminEditProductFragment extends Fragment {
 
     private void initProductAdapter() {
         RecyclerView rvProduct = binding.rvProduct;
-        productAdapter = new ProductAdapter(this.getContext(), product -> {
+        productAdapter = new ProductAdapter(product -> {
             if (title.equals(getResources().getString(R.string.edit_product))) {
                 goToEditProductFragment(product);
             } else {

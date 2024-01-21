@@ -65,20 +65,15 @@ public class LoginFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+        fragmentTransaction = null;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setFastLogin();
         initBtnLogin();
         initBtnGoToRegistration();
         initLiveDataObserver();
-    }
-
-    private void setFastLogin() {
-        binding.etEmail.setText("buraki@hs-albsig.de");
-        binding.etPassword.setText("Test123");
     }
 
     private void initBtnLogin() {
@@ -105,9 +100,7 @@ public class LoginFragment extends Fragment {
     private void goToMainFragment() {
         MainFragment mainFragment = new MainFragment();
         fragmentTransaction = getParentFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, mainFragment, Constants.TAG_MAIN)
-                .setReorderingAllowed(true)
-                .addToBackStack(null);
+                .replace(R.id.fragment_container, mainFragment, Constants.TAG_MAIN);
 
         fragmentTransaction.commit();
     }
@@ -134,8 +127,7 @@ public class LoginFragment extends Fragment {
     private void goToRegistration() {
         RegistrationFragment newRegistrationFragment = new RegistrationFragment();
         fragmentTransaction = getParentFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, newRegistrationFragment, Constants.TAG_REGISTRATION)
-                .setReorderingAllowed(true);
+                .replace(R.id.fragment_container, newRegistrationFragment, Constants.TAG_REGISTRATION);
         fragmentTransaction.commit();
     }
 }

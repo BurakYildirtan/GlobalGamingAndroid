@@ -27,29 +27,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProfileFragment extends Fragment {
-
-    private ProfileViewModel profileViewModel;
     private UserViewModel userViewModel;
     private FragmentProfileBinding binding;
     private Boolean enableEdit = false;
-
-    public static ProfileFragment newInstance() {
-        return new ProfileFragment();
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initSharedViewModel();
-        initViewModel();
     }
 
     private void initSharedViewModel() {
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
-    }
-
-    private void initViewModel() {
-        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
     }
 
     @Override
@@ -57,6 +46,12 @@ public class ProfileFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override
@@ -79,7 +74,6 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    //TODO BirthDay look up for this
     private void setUserDataInFields(UserModel userModel) {
         assert binding != null;
         TextInputEditText etUserName = binding.etUserName;

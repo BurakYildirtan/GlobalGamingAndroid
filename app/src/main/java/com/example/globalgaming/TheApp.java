@@ -7,9 +7,9 @@ import com.example.globalgaming.data.di.AppModule;
 import com.example.globalgaming.data.di.AppModuleImpl;
 import com.example.globalgaming.data.di.AppModuleImplTest;
 
-public class TheApp extends Application {
+import leakcanary.LeakCanary;
 
-    //TODO mal gucken was wird, was wird
+public class TheApp extends Application {
     @SuppressLint("StaticFieldLeak")
     public static AppModule appModule;
 
@@ -18,7 +18,6 @@ public class TheApp extends Application {
     public void onCreate() {
         super.onCreate();
 //        appModule = new AppModuleImpl(this);
-        //TODO im Test
         appModule = new AppModuleImpl(this);
     }
 }

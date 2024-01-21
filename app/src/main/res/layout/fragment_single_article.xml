@@ -67,6 +67,7 @@
                 app:layout_constraintTop_toBottomOf="@id/toolbar"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="24dp"
+                android:contentDescription="@string/single_article_picture"
                 />
 
             <com.google.android.material.divider.MaterialDivider

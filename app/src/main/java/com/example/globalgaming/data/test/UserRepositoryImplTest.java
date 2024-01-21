@@ -42,7 +42,6 @@ public class UserRepositoryImplTest implements UserRepository {
                     "]";
 
             JSONArray result = new JSONArray(jString);
-            //TODO Test
             JSONObject user1 = (JSONObject) result.get(0);
             UserModel userModel = new UserModel(user1);
 
