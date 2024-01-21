@@ -2,7 +2,6 @@ package com.example.globalgaming.ui.login;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,22 +13,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.globalgaming.R;
-import com.example.globalgaming.TheApp;
-import com.example.globalgaming.common.Connection;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.databinding.FragmentLoginBinding;
-import com.example.globalgaming.domain.model.UserModel;
-import com.example.globalgaming.domain.repository.UserRepository;
 import com.example.globalgaming.ui.main.MainFragment;
 import com.example.globalgaming.ui.registration.RegistrationFragment;
 import com.google.android.material.button.MaterialButton;
-import com.google.gson.Gson;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 public class LoginFragment extends Fragment {
 
@@ -108,9 +98,7 @@ public class LoginFragment extends Fragment {
     private void initBtnGoToRegistration() {
         assert binding != null;
         MaterialButton btnGoToRegistration = binding.btnGoToRegistration;
-        btnGoToRegistration.setOnClickListener( view -> {
-            goToRegistration();
-        });
+        btnGoToRegistration.setOnClickListener( view -> goToRegistration());
     }
 
     private void initLiveDataObserver() {

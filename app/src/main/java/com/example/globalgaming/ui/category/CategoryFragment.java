@@ -25,10 +25,6 @@ import com.example.globalgaming.domain.repository.HardwareRepository;
 import com.example.globalgaming.domain.repository.SaleRepository;
 import com.example.globalgaming.domain.repository.SoftwareRepository;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.search.SearchBar;
-
-import java.util.List;
-
 public class CategoryFragment extends Fragment {
 
     private CategoryViewModel categoryViewModel;
@@ -117,16 +113,12 @@ public class CategoryFragment extends Fragment {
 
     private void setBtnGoBackListener() {
         MaterialButton buyNow = binding.btnGoBack;
-        buyNow.setOnClickListener( view -> {
-            navController.navigate(R.id.action_categoryFragment_to_homeFragment);
-        });
+        buyNow.setOnClickListener( view -> navController.navigate(R.id.action_categoryFragment_to_homeFragment));
     }
 
     private void initProductAdapter() {
         RecyclerView rvProduct = binding.rvProduct;
-        productAdapter = new ProductAdapter(product -> {
-            navigateToSingleArticleFragment(product);
-        });
+        productAdapter = new ProductAdapter(this::navigateToSingleArticleFragment);
         rvProduct.setAdapter(productAdapter);
     }
 

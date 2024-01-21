@@ -14,11 +14,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.globalgaming.R;
-import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.helper.FormatHelpers;
-import com.example.globalgaming.domain.model.HardwareModel;
 import com.example.globalgaming.domain.model.ProductModel;
-import com.example.globalgaming.domain.model.SoftwareModel;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;

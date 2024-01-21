@@ -20,7 +20,6 @@ import com.example.globalgaming.TheApp;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.adapter.ProductAdapter;
 import com.example.globalgaming.common.callbacks.ResultCallback;
-import com.example.globalgaming.common.dialog.OnButtonClickListener;
 import com.example.globalgaming.common.dialog.SimpleBottomSheetDialog;
 import com.example.globalgaming.common.helper.FormatHelpers;
 import com.example.globalgaming.common.mapper.Result;
@@ -100,9 +99,7 @@ public class AdminEditProductFragment extends Fragment {
 
     private void setBtnGoBackListener() {
         MaterialButton buyNow = binding.btnGoBack;
-        buyNow.setOnClickListener( view -> {
-            goToSettingsFragment();
-        });
+        buyNow.setOnClickListener( view -> goToSettingsFragment());
     }
 
     private void goToSettingsFragment() {

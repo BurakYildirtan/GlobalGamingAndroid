@@ -21,9 +21,6 @@ import com.example.globalgaming.domain.model.UserModel;
 import com.example.globalgaming.ui.login.UserViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.gson.JsonObject;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProfileFragment extends Fragment {
@@ -95,14 +92,10 @@ public class ProfileFragment extends Fragment {
 
     private void initBtnListeners() {
         MaterialButton btnEdit = binding.btnEdit;
-        btnEdit.setOnClickListener( view1 -> {
-            changeEditFields();
-        });
+        btnEdit.setOnClickListener( view1 -> changeEditFields());
 
         MaterialButton btnCancel = binding.btnCancel;
-        btnCancel.setOnClickListener( view1 -> {
-            changeEditFields();
-        });
+        btnCancel.setOnClickListener( view1 -> changeEditFields());
 
         MaterialButton btnConfirm = binding.btnConfirm;
         btnConfirm.setOnClickListener( view1 -> {

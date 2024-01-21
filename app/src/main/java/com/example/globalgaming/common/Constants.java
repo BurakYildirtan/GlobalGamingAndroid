@@ -83,7 +83,6 @@ public class Constants {
     public static final String TITLE_KEY_HARDWARE = "hardware";
 
     public static final String ROLE_ADMIN = "admin";
-    public static final String ROLE_USER = "user";
 
     public static final int BTN_ADD = 1;
     public static final int BTN_REMOVE = 0;

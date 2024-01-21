@@ -13,11 +13,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.globalgaming.R;
-import com.example.globalgaming.TheApp;
 import com.example.globalgaming.common.Constants;
 import com.example.globalgaming.common.helper.FormatHelpers;
 import com.example.globalgaming.databinding.FragmentRegistrationBinding;
-import com.example.globalgaming.domain.model.UserModel;
 import com.example.globalgaming.ui.login.LoginFragment;
 import com.example.globalgaming.ui.login.UserViewModel;
 import com.example.globalgaming.ui.main.MainFragment;
@@ -108,9 +106,7 @@ public class RegistrationFragment extends Fragment {
     private void initBtnGoToLogin() {
         assert binding != null;
         MaterialButton btnGoToLogin = binding.btnGoToLogin;
-        btnGoToLogin.setOnClickListener( view1 -> {
-            goToLogin();
-        });
+        btnGoToLogin.setOnClickListener( view1 -> goToLogin() );
     }
 
     private void goToLogin() {

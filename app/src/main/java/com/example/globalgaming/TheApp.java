@@ -5,9 +5,6 @@ import android.app.Application;
 
 import com.example.globalgaming.data.di.AppModule;
 import com.example.globalgaming.data.di.AppModuleImpl;
-import com.example.globalgaming.data.di.AppModuleImplTest;
-
-import leakcanary.LeakCanary;
 
 public class TheApp extends Application {
     @SuppressLint("StaticFieldLeak")
